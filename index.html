@@ -244,7 +244,7 @@ padding:25px;
 .bannerConduta h1,
 .bannerNoticias h1{
 
-font-size:28px;
+font-size:clamp(28px,5vw,48px);
 
 }
 
@@ -289,6 +289,133 @@ z-index:1000;
 .menuMobile{
 
 display:block;
+
+}
+
+/* ================================
+   RESPONSIVIDADE MOBILE
+================================ */
+
+@media screen and (max-width:768px){
+
+html{
+font-size:15px;
+}
+
+body{
+overflow-x:hidden;
+}
+
+main{
+padding:15px;
+margin:0;
+width:100%;
+}
+
+.page{
+padding:5px;
+}
+
+/* HERO */
+
+.heroCGEx,
+.bannerConduta,
+.bannerNoticias{
+
+padding:20px;
+
+}
+
+.heroCGEx h1,
+.bannerConduta h1,
+.bannerNoticias h1{
+
+font-size:1.8rem;
+line-height:1.2;
+
+}
+
+.heroCGEx h2,
+.bannerConduta h2,
+.bannerNoticias h2{
+
+font-size:1.3rem;
+
+}
+
+.heroCGEx p,
+.bannerConduta p,
+.bannerNoticias p{
+
+font-size:0.95rem;
+
+}
+
+/* TITULOS */
+
+h1{
+
+font-size:28px!important;
+
+}
+
+h2{
+
+font-size:22px!important;
+
+}
+
+h3{
+
+font-size:18px!important;
+
+}
+
+/* CARDS */
+
+.notice,
+.condutaCard,
+.info,
+.anuncio,
+.statusCard{
+
+padding:18px;
+
+}
+
+/* GRID */
+
+.gridCondutas,
+.statusGrid,
+.destaque{
+
+grid-template-columns:1fr;
+
+}
+
+/* TABELAS */
+
+table{
+
+display:block;
+overflow-x:auto;
+
+}
+
+/* PRE */
+
+pre{
+
+font-size:13px;
+overflow:auto;
+
+}
+
+/* MENU */
+
+aside{
+
+width:260px;
 
 }
 
@@ -1737,7 +1864,7 @@ animation:fadeDown .7s;
 
 .bannerConduta h1{
 
-font-size:38px;
+font-size:clamp(28px,5vw,48px);
 margin-bottom:10px;
 
 }
