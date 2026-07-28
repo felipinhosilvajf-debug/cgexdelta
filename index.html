@@ -1,0 +1,2130 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Portal Oficial da Corregedoria | CGEx</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+background:#0f1115;
+color:white;
+display:flex;
+}
+
+aside{
+
+width:270px;
+height:100vh;
+background:#181b21;
+position:fixed;
+left:0;
+top:0;
+overflow:auto;
+border-right:1px solid #2e3138;
+
+}
+
+.logo{
+
+padding:30px;
+text-align:center;
+border-bottom:1px solid #2b2d33;
+
+}
+
+.logo h2{
+
+color:#f7c948;
+font-size:25px;
+
+}
+
+.logo p{
+
+font-size:13px;
+opacity:.6;
+
+}
+
+.menu{
+
+padding:20px;
+
+}
+
+.menu button{
+
+width:100%;
+padding:15px;
+margin-bottom:10px;
+background:#232730;
+border:none;
+color:white;
+border-radius:8px;
+cursor:pointer;
+transition:.3s;
+text-align:left;
+font-size:15px;
+
+}
+
+.menu button:hover{
+
+background:#f7c948;
+color:#111;
+
+}
+
+main{
+
+margin-left:270px;
+padding:40px;
+width:100%;
+
+}
+
+.hero{
+
+background:linear-gradient(135deg,#232730,#1b1d22);
+padding:50px;
+border-radius:15px;
+margin-bottom:30px;
+
+}
+
+.hero h1{
+
+font-size:38px;
+color:#f7c948;
+
+}
+
+.hero p{
+
+margin-top:15px;
+opacity:.8;
+font-size:17px;
+
+}
+
+.cards{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
+
+}
+
+.card{
+
+background:#1b1d22;
+padding:25px;
+border-radius:10px;
+cursor:pointer;
+transition:.3s;
+
+}
+
+.card:hover{
+
+transform:translateY(-5px);
+background:#242730;
+
+}
+
+.card h3{
+
+margin-bottom:15px;
+color:#f7c948;
+
+}
+
+.page{
+
+display:none;
+
+}
+
+.page.active{
+
+display:block;
+
+}
+
+ul{
+
+margin-top:20px;
+margin-left:20px;
+
+}
+
+li{
+
+margin-bottom:10px;
+
+}
+
+.notice{
+
+background:#272b33;
+padding:18px;
+border-left:5px solid #f7c948;
+margin-bottom:15px;
+border-radius:6px;
+
+}
+
+footer{
+
+margin-top:50px;
+text-align:center;
+opacity:.5;
+
+}
+
+/* ===========================
+   RESPONSIVIDADE
+=========================== */
+
+@media (max-width: 900px){
+
+body{
+display:block;
+}
+
+aside{
+
+position:fixed;
+left:-280px;
+top:0;
+width:270px;
+height:100%;
+z-index:999;
+transition:.35s;
+
+}
+
+aside.active{
+
+left:0;
+
+}
+
+main{
+
+margin-left:0;
+width:100%;
+padding:20px;
+
+}
+
+.heroCGEx,
+.bannerConduta,
+.bannerNoticias{
+
+padding:25px;
+
+}
+
+.heroCGEx h1,
+.bannerConduta h1,
+.bannerNoticias h1{
+
+font-size:28px;
+
+}
+
+.statusGrid,
+.gridCondutas,
+.cards,
+.destaque{
+
+grid-template-columns:1fr;
+
+}
+
+.notice{
+
+padding:18px;
+
+}
+
+}
+
+/* Botão do Menu */
+
+.menuMobile{
+
+display:none;
+position:fixed;
+top:15px;
+left:15px;
+background:#f7c948;
+color:#111;
+border:none;
+padding:12px 15px;
+font-size:20px;
+border-radius:10px;
+cursor:pointer;
+z-index:1000;
+
+}
+
+@media(max-width:900px){
+
+.menuMobile{
+
+display:block;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+<button class="menuMobile" onclick="abrirMenu()">
+☰
+</button>
+<aside>
+
+<div class="logo">
+
+<h2>CGEx</h2>
+
+<p>Portal Oficial</p>
+
+</div>
+
+<div class="menu">
+
+<button onclick="openPage('inicio')">🏠 Início</button>
+
+<button onclick="openPage('avisos')">📢 Avisos Iniciais</button>
+
+<button onclick="openPage('anuncios')">📣 Anúncios</button>
+
+<button onclick="openPage('comandos')">🚫 Comandos Proibidos</button>
+
+<button onclick="openPage('punicoes')">⚖️ Punições CGEx</button>
+
+<button onclick="openPage('frases')">💬 Punições Discord</button>
+
+<button onclick="openPage('relatorios')">📝 Modelos de Relatórios</button>
+
+<button onclick="openPage('condutas')">📖 Condutas</button>
+
+</div>
+
+</aside>
+
+<main>
+
+<div id="inicio" class="page active">
+
+<style>
+
+.heroCGEx{
+
+position:relative;
+overflow:hidden;
+padding:60px;
+border-radius:20px;
+background:linear-gradient(135deg,#17191f,#252933);
+border:1px solid #3b3f48;
+box-shadow:0 0 40px rgba(0,0,0,.4);
+margin-bottom:35px;
+
+animation:fadeHero .8s;
+
+}
+
+.heroCGEx::before{
+
+content:"";
+position:absolute;
+width:600px;
+height:600px;
+background:radial-gradient(circle,#f7c94820,transparent 70%);
+right:-220px;
+top:-220px;
+
+}
+
+.heroCGEx h1{
+
+font-size:48px;
+color:#f7c948;
+
+}
+
+.heroCGEx h3{
+
+margin-top:10px;
+font-weight:400;
+opacity:.8;
+
+}
+
+.heroCGEx p{
+
+margin-top:25px;
+font-size:17px;
+line-height:1.8;
+max-width:850px;
+
+}
+
+.statusGrid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin:35px 0;
+
+}
+
+.statusCard{
+
+background:#1d2027;
+padding:25px;
+border-radius:15px;
+border:1px solid #2f333b;
+transition:.35s;
+
+}
+
+.statusCard:hover{
+
+transform:translateY(-8px);
+border-color:#f7c948;
+box-shadow:0 0 25px rgba(247,201,72,.15);
+
+}
+
+.statusCard h2{
+
+font-size:38px;
+color:#f7c948;
+
+}
+
+.statusCard span{
+
+opacity:.7;
+
+}
+
+.manual{
+
+background:#181b21;
+padding:35px;
+border-radius:15px;
+border-left:6px solid #f7c948;
+margin-top:30px;
+
+}
+
+.manual h2{
+
+color:#f7c948;
+margin-bottom:20px;
+
+}
+
+.manual ul{
+
+margin-left:20px;
+
+}
+
+.manual li{
+
+margin-bottom:12px;
+
+}
+
+.destaque{
+
+margin-top:35px;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+gap:20px;
+
+}
+
+.info{
+
+background:#1d2027;
+
+padding:25px;
+
+border-radius:15px;
+
+transition:.35s;
+
+}
+
+.info:hover{
+
+transform:scale(1.02);
+
+}
+
+.info h3{
+
+color:#f7c948;
+
+margin-bottom:15px;
+
+}
+
+.fraseCG{
+
+margin-top:45px;
+
+text-align:center;
+
+font-size:24px;
+
+font-weight:700;
+
+color:#f7c948;
+
+animation:pulse 2s infinite;
+
+}
+
+@keyframes pulse{
+
+50%{
+
+transform:scale(1.03);
+
+}
+
+}
+
+@keyframes fadeHero{
+
+from{
+
+opacity:0;
+
+transform:translateY(-30px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+</style>
+
+<div class="heroCGEx">
+
+<h1>🏛 Portal Oficial da Corregedoria Geral do Exército</h1>
+
+<h3>Centro de Treinamento • Documentação • Procedimentos Oficiais</h3>
+
+<p>
+
+Seja bem-vindo ao Portal Oficial da Corregedoria Geral do Exército.
+
+Este ambiente foi desenvolvido para capacitar todos os integrantes da CGEx, reunindo normas, procedimentos, modelos de relatórios, critérios de punições, comandos proibidos e demais documentos oficiais utilizados durante os atendimentos.
+
+Toda decisão da Corregedoria deve ser baseada em provas, imparcialidade e no cumprimento das normas internas.
+
+</p>
+
+</div>
+
+<div class="statusGrid">
+
+<div class="statusCard">
+
+<h2>⚖️</h2>
+
+<span>Justiça</span>
+
+</div>
+
+<div class="statusCard">
+
+<h2>🛡️</h2>
+
+<span>Imparcialidade</span>
+
+</div>
+
+<div class="statusCard">
+
+<h2>📚</h2>
+
+<span>Treinamento</span>
+
+</div>
+
+<div class="statusCard">
+
+<h2>🏛️</h2>
+
+<span>Disciplina</span>
+
+</div>
+
+</div>
+
+<div class="manual">
+
+<h2>📋 Antes de iniciar qualquer atendimento</h2>
+
+<ul>
+
+<li>Leia completamente a documentação deste portal.</li>
+
+<li>Jamais aplique punições sem provas.</li>
+
+<li>Analise sempre ambos os lados.</li>
+
+<li>Respeite toda a hierarquia.</li>
+
+<li>Mantenha postura profissional.</li>
+
+<li>Utilize apenas modelos oficiais.</li>
+
+<li>Toda decisão deve possuir fundamentação.</li>
+
+<li>Em caso de dúvida, consulte um superior.</li>
+
+</ul>
+
+</div>
+
+<div class="destaque">
+
+<div class="info">
+
+<h3>⚖️ Missão da CGEx</h3>
+
+Garantir a disciplina, preservar a ordem e assegurar que todas as normas da instituição sejam cumpridas de forma justa e imparcial.
+
+</div>
+
+<div class="info">
+
+<h3>🎯 Objetivo</h3>
+
+Capacitar todos os integrantes para realizarem atendimentos padronizados, transparentes e profissionais.
+
+</div>
+
+<div class="info">
+
+<h3>📖 Portal</h3>
+
+Todo o conteúdo presente neste sistema é considerado documentação oficial da Corregedoria Geral do Exército.
+
+</div>
+
+</div>
+
+<div class="fraseCG">
+
+"A disciplina constrói a ordem. A justiça preserva a instituição."
+
+</div>
+
+</div>
+
+</div>
+
+<div id="avisos" class="page">
+
+<div class="bannerConduta">
+
+<h1>📢 Central de Avisos</h1>
+
+<p>
+Bem-vindo ao Portal Oficial da Corregedoria Geral do Exército.
+Antes de iniciar qualquer atividade, leia atentamente todas as orientações abaixo.
+O desconhecimento das normas não isenta nenhum membro de responsabilidade.
+</p>
+
+</div>
+
+<div class="gridCondutas">
+
+<div class="condutaCard">
+
+<h2>📖 Manual de Direcionamento</h2>
+
+<p>
+
+Todo novo integrante deverá estudar este portal antes de iniciar atendimentos.
+
+Aqui estão reunidos todos os procedimentos utilizados oficialmente pela CGEx.
+
+</p>
+
+</div>
+
+<div class="condutaCard">
+
+<h2>📝 Modelos Oficiais</h2>
+
+<p>
+
+Os modelos de Advertência, Rebaixamento e Exílio estão disponíveis na aba<b>Modelos de Relatórios</b>.
+
+Todos possuem formato padronizado e podem ser copiados.
+
+</p>
+
+</div>
+
+<div class="condutaCard">
+
+<h2>⚖️ Critérios de Punições</h2>
+
+<p>
+
+As punições exibidas neste portal encontram-se atualizadas conforme os critérios oficiais da Corregedoria.
+
+Sempre consulte esta seção antes de emitir qualquer decisão.
+
+</p>
+
+</div>
+
+<div class="condutaCard">
+
+<h2>🚫 Comandos Proibidos</h2>
+
+<p>
+
+A lista oficial de comandos proibidos encontra-se disponível neste portal.
+
+Antes de denunciar ou aplicar punições, verifique as exceções permitidas.
+
+</p>
+
+</div>
+
+<div class="condutaCard">
+
+<h2>📚 Atualizações</h2>
+
+<p>
+
+Sempre que houver alterações em normas, procedimentos ou punições,este portal será atualizado.
+
+Utilize sempre a versão mais recente da documentação.
+
+</p>
+
+</div>
+
+<div class="condutaCard">
+
+<h2>📂 Uso Obrigatório</h2>
+
+<p>
+
+Todos os membros da Corregedoria devem utilizar este portal como referência oficial.
+
+Em caso de conflito entre informações antigas e este portal, avise para ser atualizado.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="juramento">
+
+<h2>⚠️ Recomendações Importantes</h2>
+
+<ul>
+
+<li>✔ Nunca aplique punições sem provas.</li>
+
+<li>✔ Analise sempre os dois lados.</li>
+
+<li>✔ Utilize apenas modelos oficiais.</li>
+
+<li>✔ Respeite a hierarquia.</li>
+
+<li>✔ Registre todas as ações em relatório.</li>
+
+<li>✔ Seja imparcial em qualquer situação.</li>
+
+<li>✔ Em caso de dúvida, consulte um superior.</li>
+
+<li>✔ Mantenha postura profissional durante os atendimentos.</li>
+
+</ul>
+
+</div>
+
+<div class="notice" style="margin-top:30px;border-left:6px solid #28c76f;">
+
+<h2 style="color:#28c76f;">✅ Situação do Portal</h2>
+
+<p>
+
+<strong>Versão:</strong> 1.0<br><strong>Status:</strong> Online<br><strong>Documentação:</strong> Atualizada<br><strong>Uso:</strong> Obrigatório para membros da CGEx
+
+</p>
+
+</div>
+
+<div class="fraseCG">
+
+"A informação correta evita erros. A documentação fortalece a Corregedoria."
+
+</div>
+
+</div>
+
+<div id="anuncios" class="page">
+
+<style>
+
+.bannerNoticias{
+
+background:linear-gradient(135deg,#0f4c81,#183b63);
+padding:45px;
+border-radius:18px;
+margin-bottom:35px;
+position:relative;
+overflow:hidden;
+animation:fadeDown .6s;
+
+}
+
+.bannerNoticias::after{
+
+content:"";
+position:absolute;
+right:-80px;
+top:-80px;
+width:260px;
+height:260px;
+background:rgba(255,255,255,.05);
+border-radius:50%;
+
+}
+
+.bannerNoticias h1{
+
+font-size:38px;
+
+}
+
+.bannerNoticias p{
+
+margin-top:12px;
+opacity:.9;
+line-height:1.7;
+
+}
+
+.timeline{
+
+position:relative;
+padding-left:35px;
+
+}
+
+.timeline::before{
+
+content:"";
+position:absolute;
+left:10px;
+top:0;
+bottom:0;
+width:3px;
+background:#f7c948;
+
+}
+
+.anuncio{
+
+position:relative;
+background:#1c2028;
+border:1px solid #2c313a;
+border-radius:15px;
+padding:25px;
+margin-bottom:25px;
+transition:.35s;
+
+}
+
+.anuncio:hover{
+
+transform:translateX(8px);
+border-color:#f7c948;
+box-shadow:0 0 25px rgba(247,201,72,.18);
+
+}
+
+.anuncio::before{
+
+content:"";
+position:absolute;
+left:-33px;
+top:28px;
+width:18px;
+height:18px;
+border-radius:50%;
+background:#f7c948;
+box-shadow:0 0 10px #f7c948;
+
+}
+
+.data{
+
+font-size:13px;
+color:#9da6b5;
+margin-bottom:10px;
+
+}
+
+.tipo{
+
+display:inline-block;
+padding:5px 12px;
+border-radius:30px;
+background:#f7c948;
+color:#111;
+font-size:12px;
+font-weight:bold;
+margin-bottom:15px;
+
+}
+
+.importante{
+
+background:#9b1c1c;
+
+color:#fff;
+
+}
+
+.novo{
+
+background:#1d9c57;
+
+color:#fff;
+
+}
+
+.info{
+
+background:#276ef1;
+
+color:#fff;
+
+}
+
+</style>
+
+<div class="bannerNoticias">
+
+<h1>📢 Boletim Oficial da Corregedoria</h1>
+
+<p>
+
+Todos os comunicados oficiais da Corregedoria Geral do Exército serão publicados nesta página.
+
+Sempre consulte os anúncios antes de iniciar seus atendimentos.
+
+</p>
+
+</div>
+
+<div class="timeline">
+
+<div class="anuncio">
+
+<div class="data">
+
+📅 28/07/2026 • 01:10
+
+</div>
+
+<span class="tipo importante">
+
+IMPORTANTE
+
+</span>
+
+<h2>Critérios de Punições</h2>
+
+<p>
+
+Os critérios de punições da CGEx foram atualizados.
+
+Todos os membros deverão utilizar este portal como referência e avisar se ocorrer divergências.
+
+</p>
+
+</div>
+
+<div class="anuncio">
+
+<div class="data">
+
+📅 28/07/2026 • 01:10
+
+</div>
+
+<span class="tipo novo">
+
+NOVO
+
+</span>
+
+<h2>Portal Oficial disponibilizado</h2>
+
+<p>
+
+Foi disponibilizado o Portal Oficial da Corregedoria contendo documentação, modelos, comandos proibidos e procedimentos administrativos.
+
+</p>
+
+</div>
+
+<div class="anuncio">
+
+<div class="data">
+
+📅 28/07/2026 • 01:10
+
+</div>
+
+<span class="tipo info">
+
+INFORMATIVO
+
+</span>
+
+<h2>Padronização de Relatórios</h2>
+
+<p>
+
+Todos os relatórios deverão utilizar exclusivamente os modelos disponibilizados neste portal.
+
+Modelos antigos deixam de ser considerados oficiais.
+
+</p>
+
+</div>
+
+<div class="anuncio">
+
+<div class="data">
+
+📅 28/07/2026 • 01:10
+
+</div>
+
+<span class="tipo importante">
+
+IMPORTANTE
+
+</span>
+
+<h2>Consulta obrigatória da documentação</h2>
+
+<p>
+
+Antes de qualquer punição, consulte a documentação oficial disponível neste sistema.
+
+Decisões tomadas em desacordo com os critérios da CGEx poderão ser revistas.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="punicoes" class="page">
+
+<h1>⚖️ Punições Aplicadas pela CGEx</h1>
+
+<br>
+
+<div class="notice">
+
+<h2 style="color:#f7c948;">⚠️ ADVERTÊNCIA</h2>
+
+<ul>
+
+<li>Má conduta.</li>
+
+<li>Falta de gramática.</li>
+
+<li>Pedir free / treino.</li>
+
+<li>Abreviação de palavras / gírias.</li>
+
+<li>Abate de civis sem justificativa.</li>
+
+<li>Uso de fardamento incorreto.</li>
+
+<li>Uso de exploits para realizar JJs dentro do jogo.</li>
+
+<li>Abuso de comando <b>.sit</b> (abuso de bugs que quebram o role play no EB).</li>
+
+<li>Ausência fora de área AFK.</li>
+
+<li>Música inapropriada dentro do quartel.</li>
+
+<li>Prisão de forma abusiva (segurar a pessoa na algema por minutos sem justificativa plausível).</li>
+
+<li>Atrapalhar o trabalho da CGEx (quando o militar do EB atrapalha a ação de integrante da CGEx em sala enquanto ele estiver resolvendo chamado, mesmo após avisos).</li>
+
+<li>Abuso de poder.</li>
+
+<li>Mencionar outro EB de forma sugestiva para angariar usuários.</li>
+
+</ul>
+
+</div>
+
+<br>
+
+<div class="notice">
+
+<h2 style="color:#ff9f43;">🔻 REBAIXAMENTO</h2>
+
+<p><b>Limite:</b> 4 rebaixamentos.</p>
+
+<ul>
+
+<li>Omissão ao entregar a patente do aprovado após seis horas do treino. <b>(2 rebaixamentos)</b></li>
+
+<li>Rebaixamento não autorizado pela CGEx. <b>(2 rebaixamentos)</b> +1 rebaixamento para cada pessoa rebaixada.</li>
+
+<li>Aplicar treinamento incorretamente. <b>(1 rebaixamento)</b></li>
+
+<li>Aplicar recrutamento de forma errada. <b>(1 rebaixamento)</b></li>
+
+<li>Uso de comandos proibidos. <b>(1 rebaixamento)</b></li>
+
+<li>Acúmulo de 3 advertências. <b>(1 rebaixamento)</b></li>
+
+<li>Free patente. <b>(3 rebaixamentos)</b></li>
+
+<li>Free rank em excesso. <b>(Rebaixamento para Recruta + Exílio)</b></li>
+
+<li>Reincidência no uso de exploits para realizar JJs, mesmo após advertência. <b>(1 rebaixamento)</b></li>
+
+</ul>
+
+</div>
+
+<br>
+
+<div class="notice">
+
+<h2 style="color:#ff4d4d;">❗ EXÍLIO / BANIMENTO</h2>
+
+<ul>
+
+<li>Uso de scripts para obter vantagens ou prejudicar militares.</li>
+
+<li>Abuso de bugs (bug exploit).</li>
+
+<li>Difamação à nossa instituição.</li>
+
+<li>Participar de ambientes que conspiram contra o EB.</li>
+
+<li>Fraude / golpe.</li>
+
+<li>Raid.</li>
+
+<li>Assédio.</li>
+
+<li>Conteúdo discriminatório / discurso de ódio.</li>
+
+<li>Conteúdo pornográfico / gore.</li>
+
+<li>Divulgação de outro EB.</li>
+
+<li>Participar de outro EB com envolvimento no desenvolvimento dele.</li>
+
+</ul>
+
+</div>
+
+<br>
+
+<div class="notice">
+
+<h2 style="color:#64d2ff;">❎ REVOGAÇÃO</h2>
+
+<p>
+
+Aplicável apenas quando o militar for rebaixado sem a devida documentação, relatório formal ou tiver promovido um militar por engano.
+
+</p>
+
+<p>
+
+Antes da revogação, confirme que a ação não foi realizada por terceiros responsáveis, como:
+
+</p>
+
+<ul>
+
+<li>Delta</li>
+
+<li>Jottzk</li>
+
+<li>GengarMelhorPoke</li>
+
+<li>el gandra</li>
+
+<li>Patrono</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div id="comandos" class="page">
+
+<h1>🚫 Comandos Proibidos</h1>
+
+<p style="margin-top:10px;opacity:.8;">
+<b>CGEx - Corregedoria Geral do Exército</b>
+</p>
+
+<br>
+
+<div class="notice">
+
+<h2 style="color:#f7c948;">⚠️ Atenção</h2>
+
+<p>
+O uso indevido dos comandos abaixo pode resultar em punições disciplinares.
+Algumas exceções se aplicam conforme a hierarquia ou permissões especiais.
+</p>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#f7c948;">📌 DISFARÇAR</h2>
+
+<ul>
+<li><b>TERMINANTEMENTE PROIBIDO PARA TODOS.</b></li>
+</ul>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#f7c948;">📌 TITLE</h2>
+
+<ul>
+<li>Expressamente proibido em servidores públicos.</li>
+</ul>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#f7c948;">📌 CMDBAR2</h2>
+
+<p><b>Proibido.</b></p>
+
+<p><b>Patentes autorizadas:</b></p>
+
+<ul>
+
+<li>Corregedor+ da SGEx</li>
+
+<li>Sub Criadores</li>
+
+</ul>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#f7c948;">📌 COUNTDOWN</h2>
+
+<ul>
+<li>Expressamente proibido em servidores públicos.</li>
+</ul>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#f7c948;">📌 HipHeight e derivados</h2>
+
+<ul>
+<li>Expressamente proibido em servidores públicos.</li>
+</ul>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#f7c948;">📌 CHAR</h2>
+
+<p><b>Patentes autorizadas:</b></p>
+
+<ul>
+
+<li>Membros com Gamepass (Elite Club, Vice Club e Light Club).</li>
+
+<li>Aspirantes+ (apenas se o char for de cunho militar).</li>
+
+<li>Char's com conteúdo NSFW/Gore ou que violem as regras da comunidade são estritamente proibidos.</li>
+
+<li>O comando é considerado proibido quando utilizado em outra pessoa ou quando quebra as regras da comunidade.</li>
+
+</ul>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#f7c948;">📌 KICK</h2>
+
+<p><b>Proibido em servidores públicos.</b></p>
+
+<p><b>Patentes autorizadas:</b></p>
+
+<ul>
+
+<li>Apenas membros da Corregedoria Geral do Exército (CGEx).</li>
+
+</ul>
+
+<p>
+
+O comando <b>KICK</b> somente poderá ser utilizado para fins administrativos.
+
+</p>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#f7c948;">📌 Bubblechat</h2>
+
+<ul>
+
+<li>Expressamente proibido para todos, exceto Sub Criadores.</li>
+
+</ul>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#f7c948;">📌 CLONE</h2>
+
+<ul>
+
+<li>Expressamente proibido para todos em servidores públicos.</li>
+
+</ul>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#f7c948;">📌 Forcefield, God e derivados</h2>
+
+<ul>
+
+<li>Proibido para todos, exceto Sócios e Sub Criadores+.</li>
+
+</ul>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#f7c948;">📌 H, M, SM e derivados</h2>
+
+<ul>
+
+<li>Expressamente proibido para todos em servidores públicos.</li>
+
+</ul>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#f7c948;">📌 INVISIBLE</h2>
+
+<p><b>Proibido.</b></p>
+
+<p><b>Patentes autorizadas:</b></p>
+
+<ul>
+
+<li>Coordenadores+ da CGEx (apenas para fins administrativos).</li>
+
+<li>Vice-Presidentes.</li>
+
+<li>Presidente.</li>
+
+<li>Sócios.</li>
+
+<li>Sub Criadores.</li>
+
+</ul>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#f7c948;">📌 Refresh (ref) e Respawn (res)</h2>
+
+<ul>
+
+<li>É proibido utilizar estes comandos em pessoas desconhecidas.</li>
+
+<li>Utilize apenas em si mesmo e sempre com moderação.</li>
+
+</ul>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#ff4d4d;">📌 Kill, Explode, Punish, Ice e derivados</h2>
+
+<ul>
+
+<li><b>COMPLETAMENTE PROIBIDOS PARA TODOS.</b></li>
+
+</ul>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#f7c948;">📌 TO</h2>
+
+<ul>
+
+<li>Expressamente proibido utilizar <b>:to</b> em pessoas que não autorizaram ou que você não conheça.</li>
+
+</ul>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#64d2ff;">📨 Denúncias</h2>
+
+<p>
+
+Caso você presencie alguém utilizando qualquer um destes comandos de forma irregular, abra um ticket na Corregedoria informando:
+
+</p>
+
+<ul>
+
+<li>Nickname do infrator.</li>
+
+<li>Provas (vídeo ou imagens).</li>
+
+<li>Contexto da ocorrência.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div id="relatorios" class="page">
+
+<h1>📝 Modelos Oficiais de Relatórios</h1>
+
+<p style="margin-top:10px;opacity:.8;">
+Os modelos abaixo devem ser utilizados pelos membros da Corregedoria Geral do Exército (CGEx). Mantenha sempre as informações completas e as comprovações anexadas.
+</p>
+
+<br>
+
+<div class="notice">
+
+<h2 style="color:#FFD700;">⚠️ Modelo de Advertência</h2>
+<button onclick="copiar('adv')">📋 Copiar Modelo</button>
+<pre id="adv" style="white-space:pre-wrap;color:#fff;font-family:Consolas,monospace;">
+
+**《 ADVERTÊNCIA 》
+• | Responsável:
+• | Função: Corregedoria.
+♤ ——————————————— ♤
+• | Indivíduo: 
+• | Nick do Roblox: 
+• | ID: 
+
+• | Motivo(s): 
+• | Observações: 
+♤ ——————————————— ♤
+• | Data/Hora:
+• | Comprovações:**
+
+</pre>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#FF9F43;">🔻 Modelo de Rebaixamento</h2>
+<button onclick="copiar('reb')">📋 Copiar Modelo</button>
+<pre id="reb" style="white-space:pre-wrap;color:#fff;font-family:Consolas,monospace;">
+
+**《 REBAIXAMENTO 》
+♤ ——————————————— ♤
+• | Responsável: 
+• | Função: Corregedoria 
+♤ ——————————————— ♤
+• | Indivíduo: 
+• | Nick do Roblox: 
+• | ID: 
+
+• | Motivo(s): 
+• | Antiga Função: 
+• | Nova Função: 
+
+• | Observações: 
+ ♤—————————————— ♤
+• | Data/Hora: 
+
+</pre>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#FF4D4D;">❗ Modelo de Solicitação de Exílio</h2>
+<button onclick="copiar('ex')">📋 Copiar Modelo</button>
+<pre id="ex" style="white-space:pre-wrap;color:#fff;font-family:Consolas,monospace;">
+
+:CGEx: SOLICITAÇÃO DE EXÍLIO :CGEx:
+———————————————
+• | Responsável: 
+• | Função: Corregedoria.
+———————————————
+• | Solicitante: 
+———————————————
+• | Nick Roblox: 
+• | Nick Discord:
+• | Id Discord: 1494795890144182462
+• | Motivo:
+———————————————
+• | Data-Hora: O Discord fornece. 
+• | Comprovações:
+
+</pre>
+
+</div>
+
+</div>
+
+<div id="frases" class="page">
+
+<h1>🚫 Punições do Discord</h1>
+
+<p style="margin-top:10px;opacity:.8;">
+<b>Administração | EB do Delta</b>
+</p>
+
+<br>
+
+<div class="notice">
+
+<h2 style="color:#f7c948;">📋 Informações Gerais</h2>
+
+<p>
+Nesta página estão descritas as regras da comunidade do Discord e os tipos de punições aplicáveis em caso de descumprimento.
+</p>
+
+<ul>
+
+<li><b>(L)</b> – Infrações Leves: <b>Mute de 10 minutos a 1 hora.</b></li>
+
+<li><b>(M)</b> – Infrações Moderadas: <b>Mute de 2 horas a 8 horas.</b></li>
+
+<li><b>(G)</b> – Infrações Graves: <b>Mute de 12 horas a 3 dias.</b></li>
+
+<li><b>(PB)</b> – Infrações Passíveis de Ban: <b>1 a 7 dias</b> (reincidência: <b>7 a 30 dias</b>).</li>
+
+<li><b>(EG)</b> – Infrações Extra Graves: <b>Banimento imediato (30 dias até permanente).</b></li>
+
+</ul>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#7CFC00;">🟢 (L) Infrações Leves</h2>
+
+<ul>
+
+<li>Discussões em chat.</li>
+
+<li>Uso de palavras de baixo calão simples.</li>
+
+<li>Mau uso dos canais.</li>
+
+<li>Incentivar brigas em chat.</li>
+
+<li>Flood (mensagens repetidas).</li>
+
+<li>Uso excessivo de CAPS LOCK.</li>
+
+<li>Pingar @Oficiais do Exército+ sem necessidade.</li>
+
+</ul>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#FFD700;">🟡 (M) Infrações Moderadas</h2>
+
+<ul>
+
+<li>Uso de palavras de baixo calão graves.</li>
+
+<li>Ofensas a @Oficiais do Exército+.</li>
+
+<li>Brincadeiras maliciosas.</li>
+
+<li>Assuntos inapropriados em chat.</li>
+
+</ul>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#FF8C00;">🟠 (G) Infrações Graves</h2>
+
+<ul>
+
+<li>Divulgação indireta no servidor.</li>
+
+<li>Bagunça em chat ou call.</li>
+
+<li>Tentar se passar por @[SCR] Sub Criador+.</li>
+
+<li>Ofensas diretas e graves.</li>
+
+<li>Spam.</li>
+
+<li>Conteúdo gore ou assuntos gore.</li>
+
+<li>Desobedecer ordens dentro do RP sem justificativa.</li>
+
+<li>Quebra dos Termos de Serviço do Discord.</li>
+
+</ul>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#FF4D4D;">🔴 (PB) Infrações Passíveis de Ban</h2>
+
+<ul>
+
+<li>Divulgação no servidor.</li>
+
+<li>Divulgação indireta no servidor.</li>
+
+<li>Compartilhamento de conta.</li>
+
+<li>Uso de contas alternativas para burlar punições.</li>
+
+</ul>
+
+</div>
+
+<div class="notice">
+
+<h2 style="color:#8B0000;">⛔ (EG) Infrações Extra Graves</h2>
+
+<ul>
+
+<li>Divulgação no privado.</li>
+
+<li>Imagens ou assuntos de pedofilia.</li>
+
+<li>Imagens ou assuntos de zoofilia.</li>
+
+<li>Imagens ou assuntos de necrofilia.</li>
+
+<li>Imagens ou assuntos homofóbicas.</li>
+
+<li>Imagens ou assuntos nazistas.</li>
+
+<li>Imagens ou assuntos que sejam contra os Direitos Humanos.</li>
+
+<li>Incentivo ou imagens de automutilação.</li>
+
+<li>Ameaças reais.</li>
+
+<li>Tentativa de invadir contas.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div id="condutas" class="page">
+
+<style>
+
+.bannerConduta{
+
+background:linear-gradient(135deg,#f7c948,#c9a227);
+padding:45px;
+border-radius:18px;
+color:#111;
+margin-bottom:30px;
+box-shadow:0 0 35px rgba(247,201,72,.35);
+
+animation:fadeDown .7s;
+
+}
+
+.bannerConduta h1{
+
+font-size:38px;
+margin-bottom:10px;
+
+}
+
+.bannerConduta p{
+
+font-size:17px;
+font-weight:500;
+
+}
+
+.gridCondutas{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:22px;
+
+}
+
+.condutaCard{
+
+background:#1b1d22;
+border:1px solid #2d3038;
+border-radius:14px;
+padding:25px;
+transition:.35s;
+cursor:pointer;
+position:relative;
+overflow:hidden;
+
+}
+
+.condutaCard::before{
+
+content:"";
+position:absolute;
+left:0;
+top:0;
+height:4px;
+width:100%;
+background:#f7c948;
+transform:scaleX(0);
+transition:.35s;
+
+}
+
+.condutaCard:hover::before{
+
+transform:scaleX(1);
+
+}
+
+.condutaCard:hover{
+
+transform:translateY(-8px);
+box-shadow:0 0 25px rgba(247,201,72,.2);
+
+}
+
+.condutaCard h2{
+
+margin-bottom:15px;
+color:#f7c948;
+
+}
+
+.condutaCard ul{
+
+margin-left:20px;
+
+}
+
+.condutaCard li{
+
+margin-bottom:10px;
+
+}
+
+.juramento{
+
+margin-top:40px;
+background:#181b21;
+padding:30px;
+border-radius:15px;
+border-left:6px solid #f7c948;
+
+}
+
+.juramento h2{
+
+color:#f7c948;
+margin-bottom:20px;
+
+}
+
+.juramento p{
+
+line-height:1.8;
+
+}
+
+.progresso{
+
+margin-top:35px;
+
+}
+
+.barra{
+
+width:100%;
+height:14px;
+background:#30343c;
+border-radius:50px;
+overflow:hidden;
+
+}
+
+.preenchimento{
+
+height:100%;
+width:100%;
+background:linear-gradient(90deg,#f7c948,#ffd95a);
+animation:load 2s;
+
+}
+
+.fraseFinal{
+
+margin-top:40px;
+text-align:center;
+font-size:22px;
+font-weight:600;
+color:#f7c948;
+
+animation:pulse 2s infinite;
+
+}
+
+@keyframes pulse{
+
+50%{
+
+transform:scale(1.03);
+
+}
+
+}
+
+@keyframes fadeDown{
+
+from{
+
+opacity:0;
+transform:translateY(-30px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+@keyframes load{
+
+from{
+
+width:0%;
+
+}
+
+to{
+
+width:100%;
+
+}
+
+}
+
+</style>
+
+<div class="bannerConduta">
+
+<h1>📖 Manual de Conduta da Corregedoria</h1>
+
+<p>
+A Corregedoria representa a imparcialidade, disciplina e justiça dentro do Exército Brasileiro do Delta.
+Cada decisão tomada por um Corregedor reflete diretamente na credibilidade da instituição.
+</p>
+
+</div>
+
+<div class="gridCondutas">
+
+<div class="condutaCard">
+
+<h2>⚖️ Imparcialidade</h2>
+
+<ul>
+
+<li>Nunca favoreça amigos.</li>
+
+<li>Nunca prejudique desafetos.</li>
+
+<li>Analise apenas fatos.</li>
+
+<li>Toda decisão deve possuir fundamento.</li>
+
+<li>A prova sempre prevalece sobre opiniões.</li>
+
+</ul>
+
+</div>
+
+<div class="condutaCard">
+
+<h2>🛡️ Postura</h2>
+
+<ul>
+
+<li>Mantenha educação durante todo atendimento.</li>
+
+<li>Nunca provoque usuários.</li>
+
+<li>Evite discussões desnecessárias.</li>
+
+<li>Seja profissional mesmo sob pressão.</li>
+
+<li>Respeite toda a hierarquia.</li>
+
+</ul>
+
+</div>
+
+<div class="condutaCard">
+
+<h2>📂 Análise</h2>
+
+<ul>
+
+<li>Leia todo o contexto.</li>
+
+<li>Confira horários.</li>
+
+<li>Analise prints e vídeos.</li>
+
+<li>Nunca aplique punições precipitadas.</li>
+
+<li>Considere agravantes e atenuantes.</li>
+
+</ul>
+
+</div>
+
+<div class="condutaCard">
+
+<h2>🚫 Condutas Proibidas</h2>
+
+<ul>
+
+<li>Abuso de poder.</li>
+
+<li>Favorecimento.</li>
+
+<li>Punições por vingança.</li>
+
+<li>Alterar provas.</li>
+
+<li>Divulgar informações internas.</li>
+
+</ul>
+
+</div>
+
+<div class="condutaCard">
+
+<h2>📋 Durante um Atendimento</h2>
+
+<ul>
+
+<li>Ouça ambas as partes.</li>
+
+<li>Solicite provas.</li>
+
+<li>Mantenha organização.</li>
+
+<li>Explique o motivo da decisão.</li>
+
+<li>Registre corretamente o relatório.</li>
+
+</ul>
+
+</div>
+
+<div class="condutaCard">
+
+<h2>🏆 Excelência</h2>
+
+<ul>
+
+<li>Seja exemplo para os demais militares.</li>
+
+<li>Atualize-se sobre as normas.</li>
+
+<li>Busque melhorar continuamente.</li>
+
+<li>Trabalhe em equipe.</li>
+
+<li>Zele pela reputação da CGEx.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div class="progresso">
+
+<h3 style="margin-bottom:10px;color:#f7c948;">
+✔ Manual de Conduta Oficial
+</h3>
+
+<div class="barra">
+
+<div class="preenchimento"></div>
+
+</div>
+
+</div>
+
+<div class="juramento">
+
+<h2>🏛 Juramento do Corregedor</h2>
+
+<p>
+
+"Comprometo-me a exercer minhas funções com honestidade, imparcialidade e responsabilidade, respeitando todas as normas da Corregedoria Geral do Exército. Agirei sempre baseado em provas, preservando a justiça, a disciplina e a credibilidade da instituição, sem permitir que interesses pessoais interfiram em minhas decisões."
+
+</p>
+
+</div>
+
+<div class="fraseFinal">
+
+"A Justiça fortalece o Exército. A Imparcialidade fortalece a Justiça."
+
+</div>
+
+</div>
+
+<footer>
+
+Portal Oficial da Corregedoria © 2026
+
+</footer>
+
+</main>
+
+<script>
+
+function openPage(page){
+
+document.querySelectorAll(".page").forEach(p=>{
+
+p.classList.remove("active");
+
+});
+
+document.getElementById(page).classList.add("active");
+
+}
+
+function copiar(id){
+    const texto = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(texto);
+    alert("Modelo copiado com sucesso!");
+}
+
+function abrirMenu(){
+
+document.querySelector("aside").classList.toggle("active");
+
+}
+</script>
+
+</body>
+</html>
