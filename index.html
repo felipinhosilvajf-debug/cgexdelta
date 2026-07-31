@@ -2742,17 +2742,6 @@ Portal Oficial da Corregedoria © 2026
         item.style.display = item.innerText.toLowerCase().includes(term) ? '' : 'none';
       });
     }
-	function openPage(page){
-
-document.querySelectorAll(".page").forEach(p=>{
-
-p.classList.remove("active");
-
-});
-
-document.getElementById(page).classList.add("active");
-
-}
 
 function copiar(id){
     const texto = document.getElementById(id).innerText;
