@@ -74,12 +74,16 @@
       font-size: 14px;
       font-weight: 500;
       display: flex;
-      items-center: center;
+      align-items: center;
       gap: 10px;
     }
-    .menu button:hover {
+    /* Efeito de hover e foco no menu */
+    .menu button:hover,
+    .menu button:focus {
       background: #f7c948;
       color: #111;
+      transform: translateX(4px);
+      box-shadow: 0 4px 12px rgba(247, 201, 72, 0.25);
     }
     .menu button.active-btn {
       background: #f7c948;
@@ -94,7 +98,8 @@
       border: 1px solid #6366f1 !important;
       box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
     }
-    .btn-alto-escalao:hover {
+    .btn-alto-escalao:hover,
+    .btn-alto-escalao:focus {
       background: linear-gradient(135deg, #6366f1, #4f46e5) !important;
       color: #fff !important;
       box-shadow: 0 4px 18px rgba(99, 102, 241, 0.5);
@@ -127,7 +132,7 @@
       box-shadow: 0 0 30px rgba(0,0,0,.4);
       margin-bottom: 25px;
     }
-    .heroCGEx h1, .bannerConduta h1, .bannerNoticias h1 { font-size: 32px; color: #1e00ff; font-weight: 700; }
+    .heroCGEx h1, .bannerConduta h1, .bannerNoticias h1 { font-size: 32px; color: #f7c948; font-weight: 700; }
     .heroCGEx p, .bannerConduta p, .bannerNoticias p { margin-top: 15px; opacity: .85; font-size: 15px; line-height: 1.7; }
 
     .statusGrid {
@@ -178,6 +183,11 @@
       padding: 20px;
       border-radius: 12px;
       border: 1px solid #2f333b;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .condutaCard:hover {
+      transform: translateY(-4px);
+      border-color: #f7c948;
     }
     .condutaCard h2 { color: #f7c948; font-size: 18px; margin-bottom: 8px; }
     .condutaCard p { font-size: 13px; opacity: .8; line-height: 1.6; }
@@ -197,6 +207,11 @@
       border-left: 5px solid #f7c948;
       margin-bottom: 15px;
       border-radius: 6px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .notice:hover {
+      transform: translateX(4px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
 
     /* Estilos do Boletim / Anúncios */
@@ -207,7 +222,7 @@
       margin-bottom: 35px;
       position: relative;
       overflow: hidden;
-      animation: fadeDown .6s;
+      animation: fadeIn .6s;
     }
     .bannerNoticias::after {
       content: "";
@@ -243,13 +258,15 @@
       border-radius: 15px;
       padding: 25px;
       margin-bottom: 25px;
-      transition: .35s;
+      transition: all .35s ease;
       cursor: pointer;
     }
-    .anuncio:hover {
+    .anuncio:hover,
+    .anuncio:focus {
       transform: translateX(8px);
       border-color: #f7c948;
       box-shadow: 0 0 25px rgba(247,201,72,.18);
+      outline: none;
     }
     .anuncio::before {
       content: "";
@@ -434,7 +451,7 @@
     <div id="inicio" class="page active">
       <div class="heroCGEx">
         <h1>🏛 Portal Oficial da Corregedoria Geral do Exército</h1>
-        <h3>Centro de Treinamento • Documentação • Procedimentos Oficiais</h3>
+        <h3 class="text-amber-400 font-semibold text-lg mt-1">Centro de Treinamento • Documentação • Procedimentos Oficiais</h3>
         <p>
           Seja bem-vindo ao Portal Oficial da Corregedoria Geral do Exército.
           Este ambiente foi desenvolvido para capacitar todos os integrantes da CGEx, reunindo normas, procedimentos, modelos de relatórios, critérios de punições, comandos proibidos e demais documentos oficiais utilizados durante os atendimentos.
@@ -1039,7 +1056,7 @@
         </div>
       </div>
 
-      <div class="progresso">
+      <div class="progresso" style="margin-top:30px;">
         <h3 style="margin-bottom:10px;color:#f7c948;">
           ✔ Manual de Conduta Oficial
         </h3>
@@ -1267,17 +1284,18 @@
 
   <!-- ================= MODAIS RESTRITOS ================= -->
 
-  <!-- Modal Publicar Anúncio -->
+  <!-- Modal Publicar / Editar Anúncio -->
   <div id="modal-anuncio" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
     <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 w-full max-w-lg space-y-4 shadow-2xl">
       <div class="flex justify-between items-center border-b border-slate-800 pb-3">
         <div class="flex items-center space-x-2">
           <i class="ph-bold ph-megaphone text-indigo-400 text-xl"></i>
-          <h3 class="font-bold text-base text-white">Publicar Anúncio Oficial</h3>
+          <h3 id="modal-anuncio-title" class="font-bold text-base text-white">Publicar Anúncio Oficial</h3>
         </div>
         <button onclick="closeModal('modal-anuncio')" class="text-slate-400 hover:text-white"><i class="ph-bold ph-x text-xl"></i></button>
       </div>
       <form onsubmit="saveAnuncio(event)" class="space-y-3 text-xs">
+        <input type="hidden" id="anc-key" value="" />
         <div>
           <label class="block font-medium text-slate-400 mb-1">Tipo de Anúncio</label>
           <select id="anc-tipo" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 outline-none focus:border-indigo-500 text-slate-200">
@@ -1294,6 +1312,14 @@
           <label class="block font-medium text-slate-400 mb-1">Data / Horário</label>
           <input type="text" id="anc-data" required placeholder="Ex: 28/07/2026 • 15:30" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 outline-none focus:border-indigo-500 text-slate-200" />
         </div>
+        <!-- Novo campo: Imagem do Anúncio (Arquivo Local ou Link Direct URL) -->
+        <div>
+          <label class="block font-medium text-slate-400 mb-1">Imagem do Anúncio (Upload local ou URL Link)</label>
+          <div class="space-y-2">
+            <input type="file" id="anc-img-file" accept="image/*" onchange="handleImageUpload(event)" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2 text-slate-300 text-xs file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-indigo-600 file:text-white hover:file:bg-indigo-500" />
+            <input type="url" id="anc-imagem" placeholder="Ou cole a URL da imagem (https://...)" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 outline-none focus:border-indigo-500 text-slate-200" />
+          </div>
+        </div>
         <div>
           <label class="block font-medium text-slate-400 mb-1">Conteúdo Completo do Anúncio</label>
           <textarea id="anc-conteudo" required rows="5" placeholder="Escreva a mensagem completa do anúncio..." class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 outline-none focus:border-indigo-500 text-slate-200 leading-relaxed"></textarea>
@@ -1302,7 +1328,7 @@
           <button type="button" onclick="closeModal('modal-anuncio')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg font-semibold text-slate-300">Cancelar</button>
           <button type="submit" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-500 rounded-lg font-bold text-white flex items-center gap-1.5">
             <i class="ph-bold ph-paper-plane-right"></i>
-            <span>Publicar</span>
+            <span>Salvar Anúncio</span>
           </button>
         </div>
       </form>
@@ -1311,7 +1337,7 @@
 
   <!-- Modal Ler Anúncio Completo -->
   <div id="modal-ver-anuncio" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 w-full max-w-xl space-y-4 shadow-2xl relative">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 w-full max-w-xl space-y-4 shadow-2xl relative max-h-[90vh] overflow-y-auto">
       <div class="flex justify-between items-start border-b border-slate-800 pb-3">
         <div>
           <span id="ver-anc-tipo" class="tipo">TIPO</span>
@@ -1320,12 +1346,20 @@
         </div>
         <button onclick="closeModal('modal-ver-anuncio')" class="text-slate-400 hover:text-white p-1"><i class="ph-bold ph-x text-xl"></i></button>
       </div>
-      <div id="ver-anc-conteudo" class="text-xs md:text-sm text-slate-300 whitespace-pre-wrap leading-relaxed max-h-[60vh] overflow-y-auto pr-2">
+      
+      <!-- Área para exibição da Imagem do Anúncio -->
+      <div id="ver-anc-img-container" class="hidden my-3">
+        <a id="ver-anc-img-link" href="#" target="_blank" title="Clique para expandir/abrir imagem original">
+          <img id="ver-anc-img" src="" alt="Imagem do Anúncio" class="w-full max-h-80 object-cover rounded-xl border border-slate-800 shadow-md hover:opacity-90 transition" />
+        </a>
+      </div>
+
+      <div id="ver-anc-conteudo" class="text-xs md:text-sm text-slate-300 whitespace-pre-wrap leading-relaxed overflow-y-auto pr-2">
         Conteúdo...
       </div>
       <div class="flex justify-between items-center pt-3 border-t border-slate-800">
-        <div id="ver-anc-actions-admin">
-          <!-- Botão Excluir injetado se Admin -->
+        <div id="ver-anc-actions-admin" class="flex gap-2">
+          <!-- Botões Editar e Excluir injetados se Admin -->
         </div>
         <button onclick="closeModal('modal-ver-anuncio')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs rounded-lg">Fechar</button>
       </div>
@@ -1718,6 +1752,14 @@
 
     function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
 
+    function copiar(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      navigator.clipboard.writeText(el.innerText).then(() => {
+        alert("Modelo copiado para a área de transferência!");
+      });
+    }
+
     // REALTIME DATABASE LOGIC
     function listenToDatabase() {
       if (!db) return;
@@ -1728,6 +1770,18 @@
       db.ref('metas').on('value', s => renderMetas(s.val() || {}));
       db.ref('biblioteca').on('value', s => renderBiblioteca(s.val() || {}));
       db.ref('anuncios').on('value', s => { cacheAnuncios = s.val() || {}; renderAnuncios(cacheAnuncios); });
+    }
+
+    // LÓGICA DE UPLOAD/CONVERSÃO DE IMAGEM LOCAL
+    function handleImageUpload(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        document.getElementById('anc-imagem').value = evt.target.result;
+      };
+      reader.readAsDataURL(file);
     }
 
     // LÓGICA DE ANÚNCIOS DINÂMICOS
@@ -1786,43 +1840,78 @@
 
       const card = document.createElement('div');
       card.className = "anuncio searchable-item";
+      card.tabIndex = 0;
       card.onclick = () => verAnuncioCompleto(item.key, item);
+      card.onkeypress = (e) => { if (e.key === 'Enter') verAnuncioCompleto(item.key, item); };
+
+      const imgHTML = item.imagem ? `<div class="mt-2 mb-3 max-h-48 overflow-hidden rounded-lg"><img src="${item.imagem}" alt="Imagem do Anúncio" class="w-full object-cover rounded-lg" /></div>` : '';
+
       card.innerHTML = `
         <div class="data">${item.data || '📅 Sem data'}</div>
         <span class="tipo ${tipoClass}">${item.tipo || 'INFORMATIVO'}</span>
         <h2>${item.titulo || 'Sem Título'}</h2>
-        <p class="line-clamp-2">${item.conteudo || ''}</p>
+        ${imgHTML}
+		<p class="line-clamp-2">▶️ Ver conteúdo completo.</p><!-- ${item.conteudo || ''} -->
       `;
       container.appendChild(card);
     }
 
-    function openAnuncioModal() {
-      if (!currentUser) return alert("Apenas membros autorizados podem publicar!");
-      const now = new Date();
-      const formatData = `📅 ${now.toLocaleDateString('pt-BR')} • ${now.toLocaleTimeString('pt-BR', {hour: '2-digit', minute:'2-digit'})}`;
-      document.getElementById('anc-data').value = formatData;
-      document.getElementById('anc-titulo').value = '';
-      document.getElementById('anc-conteudo').value = '';
+    function openAnuncioModal(key = null) {
+      if (!currentUser) return alert("Apenas membros autorizados podem publicar/editar!");
+      
+      const keyInput = document.getElementById('anc-key');
+      const modalTitle = document.getElementById('modal-anuncio-title');
+      
+      if (key && cacheAnuncios[key]) {
+        const item = cacheAnuncios[key];
+        keyInput.value = key;
+        modalTitle.innerText = "Editar Anúncio Oficial";
+        document.getElementById('anc-tipo').value = item.tipo || 'INFORMATIVO';
+        document.getElementById('anc-titulo').value = item.titulo || '';
+        document.getElementById('anc-data').value = item.data || '';
+        document.getElementById('anc-imagem').value = item.imagem || '';
+        document.getElementById('anc-conteudo').value = item.conteudo || '';
+      } else {
+        keyInput.value = '';
+        modalTitle.innerText = "Publicar Anúncio Oficial";
+        const now = new Date();
+        const formatData = `📅 ${now.toLocaleDateString('pt-BR')} • ${now.toLocaleTimeString('pt-BR', {hour: '2-digit', minute:'2-digit'})}`;
+        document.getElementById('anc-data').value = formatData;
+        document.getElementById('anc-titulo').value = '';
+        document.getElementById('anc-imagem').value = '';
+        document.getElementById('anc-conteudo').value = '';
+      }
+
+      document.getElementById('anc-img-file').value = '';
       document.getElementById('modal-anuncio').classList.remove('hidden');
     }
 
     function saveAnuncio(e) {
       e.preventDefault();
       if (!currentUser) return alert("Não autorizado.");
-      
+
+      const key = document.getElementById('anc-key').value;
       const payload = {
         tipo: document.getElementById('anc-tipo').value,
         titulo: document.getElementById('anc-titulo').value,
         data: document.getElementById('anc-data').value,
+        imagem: document.getElementById('anc-imagem').value,
         conteudo: document.getElementById('anc-conteudo').value,
         autor: currentUser.email || 'Alto Escalão',
         createdAt: firebase.database.ServerValue.TIMESTAMP
       };
 
-      db.ref('anuncios').push(payload, () => {
-        closeModal('modal-anuncio');
-        alert("Anúncio publicado com sucesso!");
-      });
+      if (key) {
+        db.ref(`anuncios/${key}`).update(payload, () => {
+          closeModal('modal-anuncio');
+          alert("Anúncio atualizado com sucesso!");
+        });
+      } else {
+        db.ref('anuncios').push(payload, () => {
+          closeModal('modal-anuncio');
+          alert("Anúncio publicado com sucesso!");
+        });
+      }
     }
 
     function verAnuncioCompleto(key, itemData) {
@@ -1837,20 +1926,82 @@
       document.getElementById('ver-anc-data').innerText = item.data || '';
       document.getElementById('ver-anc-conteudo').innerText = item.conteudo || '';
 
+      const imgContainer = document.getElementById('ver-anc-img-container');
+      const imgElem = document.getElementById('ver-anc-img');
+      const imgLink = document.getElementById('ver-anc-img-link');
+
+      if (item.imagem) {
+        imgElem.src = item.imagem;
+        imgLink.href = item.imagem;
+        imgContainer.classList.remove('hidden');
+      } else {
+        imgContainer.classList.add('hidden');
+      }
+
       const actionsAdmin = document.getElementById('ver-anc-actions-admin');
       actionsAdmin.innerHTML = '';
       
-      // Se for item real do banco e o usuário for admin, permite excluir
+      // Se for item real do banco e o usuário for admin, permite Editar e Excluir
       if (currentUser && key && !key.startsWith('p')) {
         actionsAdmin.innerHTML = `
+          <button onclick="closeModal('modal-ver-anuncio'); openAnuncioModal('${key}');" class="px-3 py-1.5 bg-indigo-950/60 hover:bg-indigo-900 border border-indigo-800/50 text-indigo-300 font-semibold text-xs rounded-lg flex items-center gap-1">
+            <i class="ph-bold ph-pencil"></i>
+            <span>Editar</span>
+          </button>
           <button onclick="deleteRecord('anuncios/${key}'); closeModal('modal-ver-anuncio');" class="px-3 py-1.5 bg-rose-950/60 hover:bg-rose-900 border border-rose-800/50 text-rose-300 font-semibold text-xs rounded-lg flex items-center gap-1">
             <i class="ph-bold ph-trash"></i>
-            <span>Excluir Anúncio</span>
+            <span>Excluir</span>
           </button>
         `;
       }
 
       document.getElementById('modal-ver-anuncio').classList.remove('hidden');
+    }
+
+    function handleCasoTipoChange() {
+      const tipo = document.getElementById('caso-tipo').value;
+      const single = document.getElementById('caso-date-single');
+      const range = document.getElementById('caso-date-range');
+
+      if (tipo === 'Exílio') {
+        single.classList.add('hidden');
+        range.classList.remove('hidden');
+      } else {
+        single.classList.remove('hidden');
+        range.classList.add('hidden');
+      }
+    }
+
+    function openCasoModal() {
+      if (!currentUser) return alert("Não autorizado.");
+      document.getElementById('modal-caso').classList.remove('hidden');
+    }
+
+    function saveCaso(e) {
+      e.preventDefault();
+      if (!currentUser) return alert("Não autorizado.");
+
+      const tipo = document.getElementById('caso-tipo').value;
+      const payload = {
+        membro: document.getElementById('caso-membro').value,
+        discordId: document.getElementById('caso-discord-id').value,
+        tipo: tipo,
+        motivo: document.getElementById('caso-motivo').value,
+        createdAt: firebase.database.ServerValue.TIMESTAMP
+      };
+
+      if (tipo === 'Exílio') {
+        payload.dataInicio = document.getElementById('caso-data-inicio').value;
+        payload.dataFim = document.getElementById('caso-data-fim').value;
+      } else {
+        payload.data = document.getElementById('caso-data').value;
+      }
+
+      db.ref('casos').push(payload, () => {
+        closeModal('modal-caso');
+        e.target.reset();
+        handleCasoTipoChange();
+      });
     }
 
     function renderCasos(casos) {
@@ -1897,6 +2048,49 @@
       document.getElementById('dash-exilios').innerText = exi;
     }
 
+    function openAprendizModal(key = null) {
+      if (!currentUser) return alert("Não autorizado.");
+      const keyInput = document.getElementById('ap-key');
+      const title = document.getElementById('modal-aprendiz-title');
+
+      if (key && cacheAprendizes[key]) {
+        const item = cacheAprendizes[key];
+        keyInput.value = key;
+        title.innerText = "Editar Membro";
+        document.getElementById('ap-categoria').value = item.categoria || 'Aprendiz';
+        document.getElementById('ap-nome').value = item.nome || '';
+        document.getElementById('ap-inicio').value = item.inicio || '';
+        document.getElementById('ap-status').value = item.status || '';
+      } else {
+        keyInput.value = '';
+        title.innerText = "Novo Membro";
+        document.getElementById('ap-nome').value = '';
+        document.getElementById('ap-inicio').value = '';
+        document.getElementById('ap-status').value = '';
+      }
+
+      document.getElementById('modal-aprendiz').classList.remove('hidden');
+    }
+
+    function saveAprendiz(e) {
+      e.preventDefault();
+      if (!currentUser) return alert("Não autorizado.");
+
+      const key = document.getElementById('ap-key').value;
+      const payload = {
+        categoria: document.getElementById('ap-categoria').value,
+        nome: document.getElementById('ap-nome').value,
+        inicio: document.getElementById('ap-inicio').value,
+        status: document.getElementById('ap-status').value
+      };
+
+      if (key) {
+        db.ref(`aprendizes/${key}`).update(payload, () => closeModal('modal-aprendiz'));
+      } else {
+        db.ref('aprendizes').push(payload, () => closeModal('modal-aprendiz'));
+      }
+    }
+
     function renderAprendizes(data) {
       const listEst = document.getElementById('estagiarios-list');
       const listAp = document.getElementById('aprendizes-list');
@@ -1929,6 +2123,28 @@
 
       document.getElementById('total-estagiarios').innerText = cEst;
       document.getElementById('total-aprendizes').innerText = cAp;
+    }
+
+    function openSetorModal() {
+      if (!currentUser) return alert("Não autorizado.");
+      document.getElementById('modal-setor').classList.remove('hidden');
+    }
+
+    function saveSetorMembro(e) {
+      e.preventDefault();
+      if (!currentUser) return alert("Não autorizado.");
+
+      const payload = {
+        setor: document.getElementById('st-nome').value,
+        membro: document.getElementById('st-membro').value,
+        cargo: document.getElementById('st-cargo').value,
+        funcao: document.getElementById('st-funcao').value
+      };
+
+      db.ref('setores').push(payload, () => {
+        closeModal('modal-setor');
+        e.target.reset();
+      });
     }
 
     function renderSetores(data) {
@@ -2042,33 +2258,71 @@
       });
     }
 
+    function openMetaModal() {
+      if (!currentUser) return alert("Não autorizado.");
+      document.getElementById('modal-meta').classList.remove('hidden');
+    }
+
+    function saveMeta(e) {
+      e.preventDefault();
+      if (!currentUser) return alert("Não autorizado.");
+
+      const payload = {
+        titulo: document.getElementById('mt-titulo').value,
+        progresso: document.getElementById('mt-progresso').value,
+        prazo: document.getElementById('mt-prazo').value
+      };
+
+      db.ref('metas').push(payload, () => {
+        closeModal('modal-meta');
+        e.target.reset();
+      });
+    }
+
     function renderMetas(metas) {
       const container = document.getElementById('metas-list');
       container.innerHTML = '';
       Object.keys(metas).forEach(key => {
         const m = metas[key];
         const deleteBtn = currentUser ? `<button onclick="deleteRecord('metas/${key}')" class="text-slate-500 hover:text-rose-400"><i class="ph-bold ph-trash"></i></button>` : '';
+
         const card = document.createElement('div');
-        card.className = "bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-3 searchable-item";
+        card.className = "bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 searchable-item";
         card.innerHTML = `
-          <div class="flex justify-between items-start">
-            <div>
-              <h3 class="font-semibold text-xs text-slate-200">${m.titulo}</h3>
-              <p class="text-[10px] text-slate-400">Target: ${m.prazo}</p>
-            </div>
+          <div class="flex items-center justify-between">
+            <h3 class="font-bold text-slate-200 text-sm">${m.titulo}</h3>
             ${deleteBtn}
           </div>
-          <div>
-            <div class="flex justify-between text-[10px] font-bold mb-1">
-              <span class="text-slate-400">Progresso</span>
-              <span class="text-indigo-400">${m.progresso}%</span>
-            </div>
-            <div class="w-full bg-slate-950 rounded-full h-1.5 border border-slate-800 overflow-hidden">
-              <div class="bg-indigo-500 h-full rounded-full" style="width: ${m.progresso}%"></div>
-            </div>
+          <div class="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-slate-800">
+            <div class="bg-indigo-500 h-full rounded-full transition-all duration-500" style="width: ${m.progresso}%"></div>
+          </div>
+          <div class="flex items-center justify-between text-xs text-slate-400">
+            <span>Progresso: <b class="text-indigo-400">${m.progresso}%</b></span>
+            <span>Target: <b>${m.prazo}</b></span>
           </div>
         `;
         container.appendChild(card);
+      });
+    }
+
+    function openBiblioModal() {
+      if (!currentUser) return alert("Não autorizado.");
+      document.getElementById('modal-biblio').classList.remove('hidden');
+    }
+
+    function saveBiblio(e) {
+      e.preventDefault();
+      if (!currentUser) return alert("Não autorizado.");
+
+      const payload = {
+        titulo: document.getElementById('bb-titulo').value,
+        categoria: document.getElementById('bb-categoria').value,
+        link: document.getElementById('bb-link').value
+      };
+
+      db.ref('biblioteca').push(payload, () => {
+        closeModal('modal-biblio');
+        e.target.reset();
       });
     }
 
@@ -2078,18 +2332,19 @@
       Object.keys(docs).forEach(key => {
         const d = docs[key];
         const deleteBtn = currentUser ? `<button onclick="deleteRecord('biblioteca/${key}')" class="text-slate-500 hover:text-rose-400"><i class="ph-bold ph-trash"></i></button>` : '';
+
         const card = document.createElement('div');
-        card.className = "bg-slate-900 border border-slate-800 rounded-xl p-4 flex items-center justify-between searchable-item";
+        card.className = "bg-slate-900 border border-slate-800 rounded-xl p-4 flex items-center justify-between space-x-3 searchable-item";
         card.innerHTML = `
-          <div class="flex items-center space-x-3">
-            <i class="ph-bold ph-file-text text-indigo-400 text-xl"></i>
-            <div>
-              <h3 class="font-semibold text-xs text-slate-200">${d.titulo}</h3>
-              <span class="text-[10px] text-slate-400">${d.categoria}</span>
+          <div class="flex items-center space-x-3 min-w-0">
+            <div class="p-2.5 bg-indigo-500/10 text-indigo-400 rounded-lg shrink-0"><i class="ph-bold ph-file-text text-lg"></i></div>
+            <div class="min-w-0">
+              <h4 class="font-bold text-slate-200 text-xs truncate">${d.titulo}</h4>
+              <span class="text-[10px] text-slate-500 block truncate">${d.categoria}</span>
             </div>
           </div>
-          <div class="flex items-center space-x-2">
-            <a href="${d.link}" target="_blank" class="p-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded text-xs"><i class="ph-bold ph-arrow-square-out"></i></a>
+          <div class="flex items-center space-x-2 shrink-0">
+            <a href="${d.link}" target="_blank" class="p-2 bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white rounded-lg transition text-xs"><i class="ph-bold ph-arrow-square-out"></i></a>
             ${deleteBtn}
           </div>
         `;
@@ -2097,139 +2352,19 @@
       });
     }
 
-    // SALVAMENTOS REALTIME
-    function openCasoModal() {
-      if (!currentUser) return alert("Faça login para adicionar.");
-      document.getElementById('caso-data').valueAsDate = new Date();
-      document.getElementById('modal-caso').classList.remove('hidden');
-    }
-
-    function openAprendizModal(key = null) {
-      if (!currentUser) return alert("Faça login para alterar.");
-      const modal = document.getElementById('modal-aprendiz');
-      if (key && cacheAprendizes[key]) {
-        const item = cacheAprendizes[key];
-        document.getElementById('ap-key').value = key;
-        document.getElementById('ap-categoria').value = item.categoria || 'Aprendiz';
-        document.getElementById('ap-nome').value = item.nome || '';
-        document.getElementById('ap-inicio').value = item.inicio || '';
-        document.getElementById('ap-status').value = item.status || '';
-      } else {
-        document.getElementById('ap-key').value = "";
-        document.getElementById('ap-nome').value = "";
-        document.getElementById('ap-inicio').value = "";
-        document.getElementById('ap-status').value = "";
-      }
-      modal.classList.remove('hidden');
-    }
-
-    function openSetorModal() { if (!currentUser) return alert("Faça login."); document.getElementById('modal-setor').classList.remove('hidden'); }
-    function openMetaModal() { if (!currentUser) return alert("Faça login."); document.getElementById('modal-meta').classList.remove('hidden'); }
-    function openBiblioModal() { if (!currentUser) return alert("Faça login."); document.getElementById('modal-biblio').classList.remove('hidden'); }
-
-    function handleCasoTipoChange() {
-      const tipo = document.getElementById('caso-tipo').value;
-      if (tipo === 'Exílio') {
-        document.getElementById('caso-date-single').classList.add('hidden');
-        document.getElementById('caso-date-range').classList.remove('hidden');
-      } else {
-        document.getElementById('caso-date-single').classList.remove('hidden');
-        document.getElementById('caso-date-range').classList.add('hidden');
-      }
-    }
-
-    function saveCaso(e) {
-      e.preventDefault();
-      if (!currentUser) return alert("Não autorizado.");
-      const tipo = document.getElementById('caso-tipo').value;
-      const dataObj = {
-        membro: document.getElementById('caso-membro').value,
-        discordId: document.getElementById('caso-discord-id').value,
-        tipo: tipo,
-        motivo: document.getElementById('caso-motivo').value,
-        createdAt: firebase.database.ServerValue.TIMESTAMP
-      };
-      if (tipo === 'Exílio') {
-        dataObj.dataInicio = document.getElementById('caso-data-inicio').value;
-        dataObj.dataFim = document.getElementById('caso-data-fim').value;
-      } else {
-        dataObj.data = document.getElementById('caso-data').value;
-      }
-      db.ref('casos').push(dataObj, () => { closeModal('modal-caso'); e.target.reset(); });
-    }
-
-    function saveAprendiz(e) {
-      e.preventDefault();
-      if (!currentUser) return alert("Não autorizado.");
-      const key = document.getElementById('ap-key').value;
-      const payload = {
-        categoria: document.getElementById('ap-categoria').value,
-        nome: document.getElementById('ap-nome').value,
-        inicio: document.getElementById('ap-inicio').value,
-        status: document.getElementById('ap-status').value
-      };
-      if (key) {
-        db.ref(`aprendizes/${key}`).update(payload, () => { closeModal('modal-aprendiz'); e.target.reset(); });
-      } else {
-        payload.createdAt = firebase.database.ServerValue.TIMESTAMP;
-        db.ref('aprendizes').push(payload, () => { closeModal('modal-aprendiz'); e.target.reset(); });
-      }
-    }
-
-    function saveSetorMembro(e) {
-      e.preventDefault();
-      if (!currentUser) return alert("Não autorizado.");
-      db.ref('setores').push({
-        setor: document.getElementById('st-nome').value,
-        membro: document.getElementById('st-membro').value,
-        cargo: document.getElementById('st-cargo').value,
-        funcao: document.getElementById('st-funcao').value,
-        createdAt: firebase.database.ServerValue.TIMESTAMP
-      }, () => { closeModal('modal-setor'); e.target.reset(); });
-    }
-
-    function saveMeta(e) {
-      e.preventDefault();
-      if (!currentUser) return alert("Não autorizado.");
-      db.ref('metas').push({
-        titulo: document.getElementById('mt-titulo').value,
-        progresso: document.getElementById('mt-progresso').value,
-        prazo: document.getElementById('mt-prazo').value,
-        createdAt: firebase.database.ServerValue.TIMESTAMP
-      }, () => { closeModal('modal-meta'); e.target.reset(); });
-    }
-
-    function saveBiblio(e) {
-      e.preventDefault();
-      if (!currentUser) return alert("Não autorizado.");
-      db.ref('biblioteca').push({
-        titulo: document.getElementById('bb-titulo').value,
-        categoria: document.getElementById('bb-categoria').value,
-        link: document.getElementById('bb-link').value,
-        createdAt: firebase.database.ServerValue.TIMESTAMP
-      }, () => { closeModal('modal-biblio'); e.target.reset(); });
-    }
-
     function deleteRecord(path) {
-      if (!currentUser) return alert("Apenas usuários autorizados!");
-      if (confirm("Deseja realmente excluir este registro?")) db.ref(path).remove();
+      if (!currentUser) return alert("Ação não permitida!");
+      if (confirm("Deseja realmente excluir este registro permanentemente?")) {
+        db.ref(path).remove();
+      }
     }
 
     function applyGlobalSearch() {
-      const term = document.getElementById('global-search').value.toLowerCase();
+      const q = document.getElementById('global-search').value.toLowerCase();
       document.querySelectorAll('.searchable-item').forEach(item => {
-        item.style.display = item.innerText.toLowerCase().includes(term) ? '' : 'none';
+        const text = item.innerText.toLowerCase();
+        item.style.display = text.includes(q) ? '' : 'none';
       });
-    }
-
-    function copiar(id) {
-      const texto = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(texto);
-      alert("Modelo copiado com sucesso!");
-    }
-
-    function abrirMenu() {
-      document.querySelector("aside").classList.toggle("active");
     }
   </script>
 </body>
