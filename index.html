@@ -1284,9 +1284,9 @@
 
   <!-- ================= MODAIS RESTRITOS ================= -->
 
-  <!-- Modal Publicar / Editar Anúncio -->
+  <!-- Modal Publicar / Editar Anúncio com Ferramentas Avançadas e Emojis -->
   <div id="modal-anuncio" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
-    <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 w-full max-w-lg space-y-4 shadow-2xl">
+    <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 w-full max-w-2xl space-y-4 shadow-2xl max-h-[92vh] overflow-y-auto">
       <div class="flex justify-between items-center border-b border-slate-800 pb-3">
         <div class="flex items-center space-x-2">
           <i class="ph-bold ph-megaphone text-indigo-400 text-xl"></i>
@@ -1312,7 +1312,7 @@
           <label class="block font-medium text-slate-400 mb-1">Data / Horário</label>
           <input type="text" id="anc-data" required placeholder="Ex: 28/07/2026 • 15:30" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 outline-none focus:border-indigo-500 text-slate-200" />
         </div>
-        <!-- Novo campo: Imagem do Anúncio (Arquivo Local ou Link Direct URL) -->
+        <!-- Imagem do Anúncio -->
         <div>
           <label class="block font-medium text-slate-400 mb-1">Imagem do Anúncio (Upload local ou URL Link)</label>
           <div class="space-y-2">
@@ -1320,10 +1320,52 @@
             <input type="url" id="anc-imagem" placeholder="Ou cole a URL da imagem (https://...)" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 outline-none focus:border-indigo-500 text-slate-200" />
           </div>
         </div>
+
+        <!-- Ferramentas Avançadas de Formatação e Emojis -->
         <div>
+          <div class="flex flex-wrap items-center justify-between gap-1 mb-1.5 bg-slate-950 border border-slate-800 p-2 rounded-t-lg">
+            <!-- Cores das Letras -->
+            <div class="flex items-center gap-1">
+              <span class="text-[10px] text-slate-400 font-semibold mr-1">Cores:</span>
+              <button type="button" onclick="insertTag('[color=#f7c948]', '[/color]')" title="Texto Amarelo" class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:bg-amber-500/40">Amarelo</button>
+              <button type="button" onclick="insertTag('[color=#ef4444]', '[/color]')" title="Texto Vermelho" class="px-2 py-0.5 rounded text-[11px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30 hover:bg-rose-500/40">Vermelho</button>
+              <button type="button" onclick="insertTag('[color=#10b981]', '[/color]')" title="Texto Verde" class="px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/40">Verde</button>
+              <button type="button" onclick="insertTag('[color=#3b82f6]', '[/color]')" title="Texto Azul" class="px-2 py-0.5 rounded text-[11px] font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30 hover:bg-blue-500/40">Azul</button>
+              <button type="button" onclick="insertTag('[color=#a855f7]', '[/color]')" title="Texto Roxo" class="px-2 py-0.5 rounded text-[11px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/30 hover:bg-purple-500/40">Roxo</button>
+            </div>
+            
+            <!-- Estilos -->
+            <div class="flex items-center gap-1">
+              <button type="button" onclick="insertTag('[b]', '[/b]')" title="Negrito" class="px-2 py-0.5 bg-slate-800 text-white rounded text-[11px] font-bold hover:bg-slate-700"><b>B</b></button>
+              <button type="button" onclick="insertTag('[i]', '[/i]')" title="Itálico" class="px-2 py-0.5 bg-slate-800 text-white rounded text-[11px] italic hover:bg-slate-700"><i>I</i></button>
+              <button type="button" onclick="insertTag('[u]', '[/u]')" title="Sublinhado" class="px-2 py-0.5 bg-slate-800 text-white rounded text-[11px] underline hover:bg-slate-700"><u>U</u></button>
+            </div>
+
+            <!-- Emojis Rápidos -->
+            <div class="w-full flex items-center gap-1 mt-1 pt-1 border-t border-slate-800 overflow-x-auto">
+              <span class="text-[10px] text-slate-400 font-semibold mr-1">Emojis:</span>
+              <button type="button" onclick="insertEmoji('📢')" class="hover:scale-125 transition text-base">📢</button>
+              <button type="button" onclick="insertEmoji('⚠️')" class="hover:scale-125 transition text-base">⚠️</button>
+              <button type="button" onclick="insertEmoji('✅')" class="hover:scale-125 transition text-base">✅</button>
+              <button type="button" onclick="insertEmoji('🚨')" class="hover:scale-125 transition text-base">🚨</button>
+              <button type="button" onclick="insertEmoji('📌')" class="hover:scale-125 transition text-base">📌</button>
+              <button type="button" onclick="insertEmoji('📜')" class="hover:scale-125 transition text-base">📜</button>
+              <button type="button" onclick="insertEmoji('⚖️')" class="hover:scale-125 transition text-base">⚖️</button>
+              <button type="button" onclick="insertEmoji('🎯')" class="hover:scale-125 transition text-base">🎯</button>
+              <button type="button" onclick="insertEmoji('🔥')" class="hover:scale-125 transition text-base">🔥</button>
+              <button type="button" onclick="insertEmoji('💡')" class="hover:scale-125 transition text-base">💡</button>
+              <button type="button" onclick="insertEmoji('💎')" class="hover:scale-125 transition text-base">💎</button>
+              <button type="button" onclick="insertEmoji('⚔️')" class="hover:scale-125 transition text-base">⚔️</button>
+              <button type="button" onclick="insertEmoji('❌')" class="hover:scale-125 transition text-base">❌</button>
+              <button type="button" onclick="insertEmoji('💬')" class="hover:scale-125 transition text-base">💬</button>
+              <button type="button" onclick="insertEmoji('👑')" class="hover:scale-125 transition text-base">👑</button>
+            </div>
+          </div>
+
           <label class="block font-medium text-slate-400 mb-1">Conteúdo Completo do Anúncio</label>
-          <textarea id="anc-conteudo" required rows="5" placeholder="Escreva a mensagem completa do anúncio..." class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 outline-none focus:border-indigo-500 text-slate-200 leading-relaxed"></textarea>
+          <textarea id="anc-conteudo" required rows="9" placeholder="Escreva a mensagem do anúncio... Use a barra acima para aplicar cores, emojis e negrito!" class="w-full bg-slate-950 border border-slate-800 rounded-b-lg p-3 outline-none focus:border-indigo-500 text-slate-200 leading-relaxed font-sans text-xs md:text-sm"></textarea>
         </div>
+
         <div class="flex justify-end space-x-2 pt-3 border-t border-slate-800">
           <button type="button" onclick="closeModal('modal-anuncio')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg font-semibold text-slate-300">Cancelar</button>
           <button type="submit" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-500 rounded-lg font-bold text-white flex items-center gap-1.5">
@@ -1350,9 +1392,7 @@
       <!-- Área para exibição da Imagem do Anúncio -->
       <div id="ver-anc-img-container" class="hidden my-3">
         <a id="ver-anc-img-link" href="#" target="" title="Clique para expandir/abrir imagem original">
-          <img id="ver-anc-img"
-     src=""
-     class="w-full max-h-80 object-cover rounded-xl border border-slate-800 shadow-md cursor-zoom-in">
+          <img id="ver-anc-img" src="" class="w-full max-h-80 object-cover rounded-xl border border-slate-800 shadow-md cursor-zoom-in">
         </a>
       </div>
 
@@ -1368,17 +1408,10 @@
     </div>
   </div>
   
-  <div id="imageViewer"
-     class="fixed inset-0 bg-black/90 hidden items-center justify-center z-[9999]">
-
-    <img id="imageViewerImg"
-         class="max-w-[95vw] max-h-[95vh] object-contain rounded-lg">
-
-    <button id="closeViewer"
-            class="absolute top-5 right-5 text-white text-4xl hover:text-red-400">
-        ✕
-    </button>
-</div>
+  <div id="imageViewer" class="fixed inset-0 bg-black/90 hidden items-center justify-center z-[9999]">
+    <img id="imageViewerImg" class="max-w-[95vw] max-h-[95vh] object-contain rounded-lg">
+    <button id="closeViewer" class="absolute top-5 right-5 text-white text-4xl hover:text-red-400">✕</button>
+  </div>
 
   <!-- Modal Login -->
   <div id="modal-login" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
@@ -1606,7 +1639,7 @@
     </div>
   </div>
 
-  <!-- SCRIPT DE LÓGICA E INTEGRAÇÃO -->
+  <!-- SCRIPT DE LÓGICA E INTEGRAÇÃO COMPLETA -->
   <script>
     const defaultConfig = {
       apiKey: "AIzaSyB6vkQZ-SOYbtEtXJOoRWV03PsTA2rUvoI",
@@ -1623,6 +1656,7 @@
     window.addEventListener('DOMContentLoaded', () => {
       initFirebase();
       handleCasoTipoChange();
+      setupImageViewer();
     });
 
     function initFirebase() {
@@ -1786,7 +1820,7 @@
       db.ref('anuncios').on('value', s => { cacheAnuncios = s.val() || {}; renderAnuncios(cacheAnuncios); });
     }
 
-    // LÓGICA DE UPLOAD/CONVERSÃO DE IMAGEM LOCAL
+    // UPLOAD / CONVERSÃO DE IMAGEM LOCAL
     function handleImageUpload(e) {
       const file = e.target.files[0];
       if (!file) return;
@@ -1798,19 +1832,53 @@
       reader.readAsDataURL(file);
     }
 
-    // LÓGICA DE ANÚNCIOS DINÂMICOS
+    // FERRAMENTAS DO EDITOR DE ANÚNCIO (INSERÇÃO DE TAGS DE COR E EMOJIS)
+    function insertTag(startTag, endTag) {
+      const textarea = document.getElementById('anc-conteudo');
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const selectedText = textarea.value.substring(start, end) || "Texto";
+      const replacement = startTag + selectedText + endTag;
+      
+      textarea.value = textarea.value.substring(0, start) + replacement + textarea.value.substring(end);
+      textarea.focus();
+      textarea.setSelectionRange(start + startTag.length, start + startTag.length + selectedText.length);
+    }
+
+    function insertEmoji(emoji) {
+      const textarea = document.getElementById('anc-conteudo');
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      
+      textarea.value = textarea.value.substring(0, start) + emoji + textarea.value.substring(end);
+      textarea.focus();
+      textarea.setSelectionRange(start + emoji.length, start + emoji.length);
+    }
+
+    // PROCESSADOR DE FORMATAÇÃO DE TEXTO PARA LEITURA DO ANÚNCIO (CORES, NEGRITO, ETC)
+    function parseFormattedText(text) {
+      if (!text) return '';
+      let formatted = text
+        .replace(/\[color=(#[0-9a-fA-F]{3,6}|[a-zA-Z]+)\]([\s\S]*?)\[\/color\]/g, '<span style="color: $1; font-weight: 600;">$2</span>')
+        .replace(/\[b\]([\s\S]*?)\[\/b\]/g, '<b>$1</b>')
+        .replace(/\[i\]([\s\S]*?)\[\/i\]/g, '<i>$1</i>')
+        .replace(/\[u\]([\s\S]*?)\[\/u\]/g, '<u>$1</u>');
+      return formatted;
+    }
+
+    // LÓGICA DE ANÚNCIOS DINÂMICOS E REORDENAÇÃO / PRIORIDADE
     function renderAnuncios(data) {
       const container = document.getElementById('anuncios-container');
       container.innerHTML = '';
 
       const keys = Object.keys(data);
       if (keys.length === 0) {
-        // Anúncios Padrões Oficiais se o banco estiver vazio
         const padroes = [
           {
             key: 'p1',
             data: '📅 28/07/2026 • 01:10',
             tipo: 'IMPORTANTE',
+            prioridade: 1,
             titulo: 'Critérios de Punições',
             conteudo: 'Os critérios de punições da CGEx foram atualizados.\n\nTodos os membros deverão utilizar este portal como referência e avisar se ocorrer divergências.'
           },
@@ -1818,6 +1886,7 @@
             key: 'p2',
             data: '📅 28/07/2026 • 01:10',
             tipo: 'NOVO',
+            prioridade: 2,
             titulo: 'Portal Oficial disponibilizado',
             conteudo: 'Foi disponibilizado o Portal Oficial da Corregedoria contendo documentação, modelos, comandos proibidos e procedimentos administrativos.'
           },
@@ -1825,6 +1894,7 @@
             key: 'p3',
             data: '📅 28/07/2026 • 01:10',
             tipo: 'INFORMATIVO',
+            prioridade: 3,
             titulo: 'Padronização de Relatórios',
             conteudo: 'Todos os relatórios deverão utilizar exclusivamente os modelos disponibilizados neste portal.\n\nModelos antigos deixam de ser considerados oficiais.'
           },
@@ -1832,42 +1902,98 @@
             key: 'p4',
             data: '📅 28/07/2026 • 01:10',
             tipo: 'IMPORTANTE',
+            prioridade: 4,
             titulo: 'Consulta obrigatória da documentação',
             conteudo: 'Antes de qualquer punição, consulte a documentação oficial disponível neste sistema.\n\nDecisões tomadas em desacordo com os critérios da CGEx poderão ser revistas.'
           }
         ];
-        padroes.forEach(item => mountAnuncioCard(container, item));
+        padroes.forEach((item, index) => mountAnuncioCard(container, item, index, padroes.length));
         return;
       }
 
-      // Ordena por data de criação mais recente
+      // Ordena anúncios por prioridade/ordem crescente (menor prioridade = aparece primeiro acima)
       const lista = keys.map(k => ({ key: k, ...data[k] }));
-      lista.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+      lista.sort((a, b) => {
+        const prioA = (a.prioridade !== undefined) ? a.prioridade : (a.createdAt || 0);
+        const prioB = (b.prioridade !== undefined) ? b.prioridade : (b.createdAt || 0);
+        return prioA - prioB;
+      });
 
-      lista.forEach(item => mountAnuncioCard(container, item));
+      lista.forEach((item, index) => mountAnuncioCard(container, item, index, lista.length, lista));
     }
 
-    function mountAnuncioCard(container, item) {
+    function mountAnuncioCard(container, item, index, totalItems, fullList = []) {
       let tipoClass = "info";
       if (item.tipo === 'IMPORTANTE') tipoClass = "importante";
       if (item.tipo === 'NOVO') tipoClass = "novo";
 
       const card = document.createElement('div');
-      card.className = "anuncio searchable-item";
+      card.className = "anuncio searchable-item group";
       card.tabIndex = 0;
-      card.onclick = () => verAnuncioCompleto(item.key, item);
-      card.onkeypress = (e) => { if (e.key === 'Enter') verAnuncioCompleto(item.key, item); };
+      card.onclick = (e) => {
+        if (!e.target.closest('.priority-btn')) {
+          verAnuncioCompleto(item.key, item);
+        }
+      };
 
-      const imgHTML = item.imagem ? `<div class="mt-2 mb-3 max-h-48 overflow-hidden rounded-lg"><img src="${item.imagem}" alt="Imagem do Anúncio" class="w-full object-cover rounded-lg" /></div>` : '';
+      // Controles de Prioridade (Mover para Cima / Mover para Baixo)
+      let priorityControls = '';
+      if (currentUser && !item.key.startsWith('p')) {
+        priorityControls = `
+          <div class="absolute right-4 top-4 flex items-center gap-1 z-10 priority-btn">
+            ${index > 0 ? `<button onclick="moverPrioridade('${item.key}', 'up', event)" title="Subir Prioridade" class="px-2 py-1 bg-slate-800 hover:bg-amber-500 hover:text-black text-slate-300 rounded text-xs font-bold transition flex items-center gap-1 border border-slate-700">⬆️ Subir</button>` : ''}
+            ${index < totalItems - 1 ? `<button onclick="moverPrioridade('${item.key}', 'down', event)" title="Descer Prioridade" class="px-2 py-1 bg-slate-800 hover:bg-amber-500 hover:text-black text-slate-300 rounded text-xs font-bold transition flex items-center gap-1 border border-slate-700">⬇️ Descer</button>` : ''}
+          </div>
+        `;
+      }
 
       card.innerHTML = `
+        ${priorityControls}
         <div class="data">${item.data || '📅 Sem data'}</div>
         <span class="tipo ${tipoClass}">${item.tipo || 'INFORMATIVO'}</span>
-        <h2>${item.titulo || 'Sem Título'}</h2>
-        <!--${imgHTML}-->
-		<p class="line-clamp-2">▶️ Ver conteúdo completo.</p><!-- ${item.conteudo || ''} -->
+        <h2 class="pr-20">${item.titulo || 'Sem Título'}</h2>
+        <p class="line-clamp-2 text-slate-400 mt-2">▶️ Ver conteúdo completo.</p>
       `;
       container.appendChild(card);
+    }
+
+    // ALTERAR PRIORIDADE/ORDEM DO ANÚNCIO NO FIREBASE
+    function moverPrioridade(key, direction, e) {
+      if (e) e.stopPropagation();
+      if (!currentUser || !db) return;
+
+      const keys = Object.keys(cacheAnuncios);
+      let lista = keys.map(k => ({ key: k, ...cacheAnuncios[k] }));
+      
+      // Ordenar lista atual
+      lista.sort((a, b) => {
+        const prioA = (a.prioridade !== undefined) ? a.prioridade : (a.createdAt || 0);
+        const prioB = (b.prioridade !== undefined) ? b.prioridade : (b.createdAt || 0);
+        return prioA - prioB;
+      });
+
+      // Garantir que todos tenham valores numéricos de prioridade
+      lista.forEach((item, idx) => {
+        item.prioridade = idx * 10;
+      });
+
+      const currIdx = lista.findIndex(i => i.key === key);
+      if (currIdx === -1) return;
+
+      let targetIdx = direction === 'up' ? currIdx - 1 : currIdx + 1;
+      if (targetIdx < 0 || targetIdx >= lista.length) return;
+
+      // Trocar valores de prioridade entre os dois itens
+      const tempPrio = lista[currIdx].prioridade;
+      lista[currIdx].prioridade = lista[targetIdx].prioridade;
+      lista[targetIdx].prioridade = tempPrio;
+
+      // Salvar atualizações no Firebase
+      const updates = {};
+      updates[`anuncios/${lista[currIdx].key}/prioridade`] = lista[currIdx].prioridade;
+      updates[`anuncios/${lista[targetIdx].key}/prioridade`] = lista[targetIdx].prioridade;
+
+      db.ref().update(updates);
     }
 
     function openAnuncioModal(key = null) {
@@ -1905,6 +2031,8 @@
       if (!currentUser) return alert("Não autorizado.");
 
       const key = document.getElementById('anc-key').value;
+      const countAnuncios = Object.keys(cacheAnuncios).length;
+      
       const payload = {
         tipo: document.getElementById('anc-tipo').value,
         titulo: document.getElementById('anc-titulo').value,
@@ -1921,6 +2049,7 @@
           alert("Anúncio atualizado com sucesso!");
         });
       } else {
+        payload.prioridade = countAnuncios * 10;
         db.ref('anuncios').push(payload, () => {
           closeModal('modal-anuncio');
           alert("Anúncio publicado com sucesso!");
@@ -1938,7 +2067,9 @@
 
       document.getElementById('ver-anc-titulo').innerText = item.titulo || 'Sem Título';
       document.getElementById('ver-anc-data').innerText = item.data || '';
-      document.getElementById('ver-anc-conteudo').innerText = item.conteudo || '';
+      
+      // Aplica formatação de cores e tags visuais ao conteúdo
+      document.getElementById('ver-anc-conteudo').innerHTML = parseFormattedText(item.conteudo || '');
 
       const imgContainer = document.getElementById('ver-anc-img-container');
       const imgElem = document.getElementById('ver-anc-img');
@@ -1955,7 +2086,6 @@
       const actionsAdmin = document.getElementById('ver-anc-actions-admin');
       actionsAdmin.innerHTML = '';
       
-      // Se for item real do banco e o usuário for admin, permite Editar e Excluir
       if (currentUser && key && !key.startsWith('p')) {
         actionsAdmin.innerHTML = `
           <button onclick="closeModal('modal-ver-anuncio'); openAnuncioModal('${key}');" class="px-3 py-1.5 bg-indigo-950/60 hover:bg-indigo-900 border border-indigo-800/50 text-indigo-300 font-semibold text-xs rounded-lg flex items-center gap-1">
@@ -1970,6 +2100,38 @@
       }
 
       document.getElementById('modal-ver-anuncio').classList.remove('hidden');
+    }
+
+    function setupImageViewer() {
+      const img = document.getElementById('ver-anc-img');
+      const viewer = document.getElementById('imageViewer');
+      const viewerImg = document.getElementById('imageViewerImg');
+      const closeBtn = document.getElementById('closeViewer');
+
+      if (img) {
+        img.addEventListener('click', (e) => {
+          e.preventDefault();
+          viewerImg.src = img.src;
+          viewer.classList.remove('hidden');
+          viewer.classList.add('flex');
+        });
+      }
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          viewer.classList.add('hidden');
+          viewer.classList.remove('flex');
+        });
+      }
+
+      if (viewer) {
+        viewer.addEventListener('click', (e) => {
+          if (e.target === viewer) {
+            viewer.classList.add('hidden');
+            viewer.classList.remove('flex');
+          }
+        });
+      }
     }
 
     function handleCasoTipoChange() {
@@ -2082,7 +2244,6 @@
         document.getElementById('ap-inicio').value = '';
         document.getElementById('ap-status').value = '';
       }
-
       document.getElementById('modal-aprendiz').classList.remove('hidden');
     }
 
@@ -2106,37 +2267,41 @@
     }
 
     function renderAprendizes(data) {
-      const listEst = document.getElementById('estagiarios-list');
-      const listAp = document.getElementById('aprendizes-list');
-      listEst.innerHTML = ''; listAp.innerHTML = '';
-      let cEst = 0, cAp = 0;
+      const listEstagiarios = document.getElementById('estagiarios-list');
+      const listAprendizes = document.getElementById('aprendizes-list');
+      listEstagiarios.innerHTML = '';
+      listAprendizes.innerHTML = '';
+
+      let countEst = 0, countAp = 0;
 
       Object.keys(data).forEach(key => {
-        const item = data[key];
-        const cat = item.categoria || 'Aprendiz';
-        const actionsHTML = currentUser ? `
-          <td class="p-3 text-right space-x-1">
-            <button onclick="openAprendizModal('${key}')" class="text-slate-500 hover:text-indigo-400"><i class="ph-bold ph-pencil-simple"></i></button>
-            <button onclick="deleteRecord('aprendizes/${key}')" class="text-slate-500 hover:text-rose-400"><i class="ph-bold ph-trash"></i></button>
-          </td>
-        ` : '';
+        const a = data[key];
+        const isEstagiario = (a.categoria === 'Estagiário');
+        if (isEstagiario) countEst++; else countAp++;
 
         const tr = document.createElement('tr');
         tr.className = "hover:bg-slate-900/50 transition searchable-item";
+        
+        const actionsHtml = currentUser ? `
+          <td class="p-3 text-right flex justify-end space-x-2">
+            <button onclick="openAprendizModal('${key}')" class="text-slate-400 hover:text-indigo-400"><i class="ph-bold ph-pencil"></i></button>
+            <button onclick="deleteRecord('aprendizes/${key}')" class="text-slate-400 hover:text-rose-400"><i class="ph-bold ph-trash"></i></button>
+          </td>
+        ` : '';
 
-        if (cat === 'Estagiário') {
-          cEst++;
-          tr.innerHTML = `<td class="p-3 font-semibold text-slate-200">${item.nome}</td><td class="p-3 text-slate-400">${item.inicio || 'N/A'}</td><td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">${item.status}</span></td>${actionsHTML}`;
-          listEst.appendChild(tr);
-        } else {
-          cAp++;
-          tr.innerHTML = `<td class="p-3 font-semibold text-slate-200">${item.nome}</td><td class="p-3 text-slate-400">${item.inicio || 'N/A'}</td><td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">${item.status}</span></td>${actionsHTML}`;
-          listAp.appendChild(tr);
-        }
+        tr.innerHTML = `
+          <td class="p-3 font-semibold text-slate-200">${a.nome}</td>
+          <td class="p-3 text-slate-400 text-xs">${a.inicio || 'N/A'}</td>
+          <td class="p-3 text-slate-300 text-xs">${a.status}</td>
+          ${actionsHtml}
+        `;
+
+        if (isEstagiario) listEstagiarios.appendChild(tr);
+        else listAprendizes.appendChild(tr);
       });
 
-      document.getElementById('total-estagiarios').innerText = cEst;
-      document.getElementById('total-aprendizes').innerText = cAp;
+      document.getElementById('total-estagiarios').innerText = countEst;
+      document.getElementById('total-aprendizes').innerText = countAp;
     }
 
     function openSetorModal() {
@@ -2155,120 +2320,49 @@
         funcao: document.getElementById('st-funcao').value
       };
 
-      db.ref('setores').push(payload, () => {
-        closeModal('modal-setor');
-        e.target.reset();
-      });
+      db.ref('setores').push(payload, () => closeModal('modal-setor'));
     }
 
     function renderSetores(data) {
       const container = document.getElementById('setores-container');
       container.innerHTML = '';
 
-      const listaSetores = [
-        "Rebaixamento e Advertências", 
-        "Promoções", 
-        "Instruções", 
-        "Avais", 
-        "Autorização", 
-        "Revogações", 
-        "Exílios"
+      const setoresNom = [
+        "Rebaixamento e Advertências", "Promoções", "Instruções", 
+        "Avais", "Autorização", "Revogações", "Exílios"
       ];
 
-      const hierarquiaOrdem = {
-        "Sec. Departamento": 1,
-        "Corregedor Geral": 2,
-        "Corregedor": 3,
-        "Coordenador": 4,
-        "Supervisor": 5,
-        "Analista": 6,
-        "Sênior": 7
-      };
-
-      listaSetores.forEach(setorNome => {
-        const membrosSetor = [];
+      setoresNom.forEach(setorNome => {
+        const div = document.createElement('div');
+        div.className = "bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3";
+        
+        let membrosHtml = '';
         Object.keys(data).forEach(k => {
           if (data[k].setor === setorNome) {
-            membrosSetor.push({ key: k, ...data[k] });
+            const m = data[k];
+            const isResp = (m.funcao === 'Responsável');
+            membrosHtml += `
+              <div class="flex items-center justify-between p-2 rounded bg-slate-950/60 border ${isResp ? 'border-amber-500/40 bg-amber-500/5' : 'border-slate-800'}">
+                <div>
+                  <p class="font-bold text-xs text-slate-200">${m.membro} ${isResp ? '⭐' : ''}</p>
+                  <p class="text-[10px] text-slate-400">${m.cargo} • ${m.funcao}</p>
+                </div>
+                ${currentUser ? `<button onclick="deleteRecord('setores/${k}')" class="text-slate-500 hover:text-rose-400 text-xs"><i class="ph-bold ph-trash"></i></button>` : ''}
+              </div>
+            `;
           }
         });
 
-        membrosSetor.sort((a, b) => {
-          const aResponsavel = a.funcao === "Responsável";
-          const bResponsavel = b.funcao === "Responsável";
-
-          if (aResponsavel && !bResponsavel) return -1;
-          if (!aResponsavel && bResponsavel) return 1;
-
-          const oA = hierarquiaOrdem[a.cargo] || 99;
-          const oB = hierarquiaOrdem[b.cargo] || 99;
-
-          return oA - oB;
-        });
-
-        let membrosHTML = '';
-        if (membrosSetor.length === 0) {
-          membrosHTML = `<p class="text-xs text-slate-500 italic p-3 text-center">Nenhum membro neste setor.</p>`;
-        } else {
-          membrosSetor.forEach(m => {
-            const isSecDep = m.cargo === "Sec. Departamento";
-            const isCorregedorGeral = m.cargo === "Corregedor Geral";
-            const isCorregedor = m.cargo === "Corregedor";
-            const isResponsavel = m.funcao === "Responsável";
-
-            let bgStyle = "bg-slate-950/60 border-slate-800/80";
-            let badgeStyle = "bg-slate-800 text-slate-400 border-slate-700";
-
-            if (isSecDep) {
-              bgStyle = "bg-gradient-to-r from-purple-950/40 to-slate-900 border-purple-500/40 shadow-sm";
-              badgeStyle = "bg-purple-500/20 text-purple-300 border-purple-500/30";
-            } else if (isCorregedorGeral) {
-              bgStyle = "bg-gradient-to-r from-amber-950/40 to-slate-900 border-amber-500/40 shadow-sm";
-              badgeStyle = "bg-amber-500/20 text-amber-300 border-amber-500/30";
-            } else if (isCorregedor) {
-              bgStyle = "bg-gradient-to-r from-indigo-950/40 to-slate-900 border-indigo-500/40 shadow-sm";
-              badgeStyle = "bg-indigo-500/20 text-indigo-300 border-indigo-500/30";
-            }
-
-            const deleteBtnHTML = currentUser 
-              ? `<button onclick="deleteRecord('setores/${m.key}')" class="text-slate-600 hover:text-rose-400 p-1 transition"><i class="ph-bold ph-trash"></i></button>` 
-              : '';
-
-            membrosHTML += `
-              <div class="flex items-center justify-between p-3 rounded-lg border ${bgStyle} transition searchable-item">
-                <div class="space-y-0.5">
-                  <div class="flex items-center space-x-1.5">
-                    <span class="font-semibold text-sm text-slate-100">${m.membro}</span>
-                    ${isResponsavel ? '<span class="text-amber-400 text-xs" title="Responsável pelo Setor">⭐</span>' : ''}
-                  </div>
-                  <div class="flex items-center space-x-2">
-                    <span class="px-2 py-0.5 rounded text-[10px] font-bold border ${badgeStyle}">${m.cargo || 'Membro'}</span>
-                    <span class="text-[11px] text-slate-400">${m.funcao || 'Auditor'}</span>
-                  </div>
-                </div>
-                ${deleteBtnHTML}
-              </div>
-            `;
-          });
-        }
-
-        const card = document.createElement('div');
-        card.className = "bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between";
-        card.innerHTML = `
-          <div class="space-y-3">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-              <div class="flex items-center space-x-2">
-                <i class="ph-bold ph-folder text-indigo-400 text-lg"></i>
-                <h3 class="font-bold text-slate-200">${setorNome}</h3>
-              </div>
-              <span class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full font-medium">${membrosSetor.length}</span>
-            </div>
-            <div class="space-y-2">
-              ${membrosHTML}
-            </div>
+        div.innerHTML = `
+          <h3 class="font-bold text-sm text-indigo-300 border-b border-slate-800 pb-2 flex items-center justify-between">
+            <span>${setorNome}</span>
+            <i class="ph-bold ph-buildings text-slate-500"></i>
+          </h3>
+          <div class="space-y-2 mt-2">
+            ${membrosHtml || '<p class="text-xs text-slate-500 italic">Nenhum membro atribuído.</p>'}
           </div>
         `;
-        container.appendChild(card);
+        container.appendChild(div);
       });
     }
 
@@ -2287,32 +2381,28 @@
         prazo: document.getElementById('mt-prazo').value
       };
 
-      db.ref('metas').push(payload, () => {
-        closeModal('modal-meta');
-        e.target.reset();
-      });
+      db.ref('metas').push(payload, () => closeModal('modal-meta'));
     }
 
-    function renderMetas(metas) {
+    function renderMetas(data) {
       const container = document.getElementById('metas-list');
       container.innerHTML = '';
-      Object.keys(metas).forEach(key => {
-        const m = metas[key];
-        const deleteBtn = currentUser ? `<button onclick="deleteRecord('metas/${key}')" class="text-slate-500 hover:text-rose-400"><i class="ph-bold ph-trash"></i></button>` : '';
 
+      Object.keys(data).forEach(k => {
+        const m = data[k];
         const card = document.createElement('div');
-        card.className = "bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-3 searchable-item";
+        card.className = "bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-2 searchable-item";
         card.innerHTML = `
-          <div class="flex items-center justify-between">
-            <h3 class="font-bold text-slate-200 text-sm">${m.titulo}</h3>
-            ${deleteBtn}
+          <div class="flex justify-between items-start">
+            <h4 class="font-bold text-xs text-slate-200">${m.titulo}</h4>
+            ${currentUser ? `<button onclick="deleteRecord('metas/${k}')" class="text-slate-500 hover:text-rose-400"><i class="ph-bold ph-trash text-xs"></i></button>` : ''}
           </div>
-          <div class="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-slate-800">
-            <div class="bg-indigo-500 h-full rounded-full transition-all duration-500" style="width: ${m.progresso}%"></div>
+          <div class="w-full bg-slate-950 h-2 rounded-full overflow-hidden border border-slate-800">
+            <div class="bg-indigo-500 h-full transition-all duration-500" style="width: ${m.progresso}%"></div>
           </div>
-          <div class="flex items-center justify-between text-xs text-slate-400">
-            <span>Progresso: <b class="text-indigo-400">${m.progresso}%</b></span>
-            <span>Target: <b>${m.prazo}</b></span>
+          <div class="flex justify-between text-[10px] text-slate-400 font-medium">
+            <span>Progresso: ${m.progresso}%</span>
+            <span>Meta: ${m.prazo}</span>
           </div>
         `;
         container.appendChild(card);
@@ -2334,75 +2424,43 @@
         link: document.getElementById('bb-link').value
       };
 
-      db.ref('biblioteca').push(payload, () => {
-        closeModal('modal-biblio');
-        e.target.reset();
-      });
+      db.ref('biblioteca').push(payload, () => closeModal('modal-biblio'));
     }
 
-    function renderBiblioteca(docs) {
+    function renderBiblioteca(data) {
       const container = document.getElementById('biblioteca-list');
       container.innerHTML = '';
-      Object.keys(docs).forEach(key => {
-        const d = docs[key];
-        const deleteBtn = currentUser ? `<button onclick="deleteRecord('biblioteca/${key}')" class="text-slate-500 hover:text-rose-400"><i class="ph-bold ph-trash"></i></button>` : '';
 
+      Object.keys(data).forEach(k => {
+        const b = data[k];
         const card = document.createElement('div');
-        card.className = "bg-slate-900 border border-slate-800 rounded-xl p-4 flex items-center justify-between space-x-3 searchable-item";
+        card.className = "bg-slate-900 border border-slate-800 rounded-xl p-4 flex items-center justify-between searchable-item";
         card.innerHTML = `
-          <div class="flex items-center space-x-3 min-w-0">
-            <div class="p-2.5 bg-indigo-500/10 text-indigo-400 rounded-lg shrink-0"><i class="ph-bold ph-file-text text-lg"></i></div>
-            <div class="min-w-0">
-              <h4 class="font-bold text-slate-200 text-xs truncate">${d.titulo}</h4>
-              <span class="text-[10px] text-slate-500 block truncate">${d.categoria}</span>
-            </div>
+          <div class="space-y-1">
+            <span class="text-[9px] uppercase font-bold tracking-wider text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2 py-0.5 rounded-md">${b.categoria}</span>
+            <h4 class="font-bold text-xs text-slate-200 mt-1">${b.titulo}</h4>
+            <a href="${b.link}" target="_blank" class="text-[11px] text-indigo-400 hover:underline flex items-center gap-1"><i class="ph-bold ph-arrow-square-out"></i> Acessar Documento</a>
           </div>
-          <div class="flex items-center space-x-2 shrink-0">
-            <a href="${d.link}" target="_blank" class="p-2 bg-slate-800 hover:bg-indigo-600 text-slate-300 hover:text-white rounded-lg transition text-xs"><i class="ph-bold ph-arrow-square-out"></i></a>
-            ${deleteBtn}
-          </div>
+          ${currentUser ? `<button onclick="deleteRecord('biblioteca/${k}')" class="text-slate-500 hover:text-rose-400"><i class="ph-bold ph-trash text-xs"></i></button>` : ''}
         `;
         container.appendChild(card);
       });
     }
 
     function deleteRecord(path) {
-      if (!currentUser) return alert("Ação não permitida!");
-      if (confirm("Deseja realmente excluir este registro permanentemente?")) {
+      if (!currentUser) return alert("Ação restrita a administradores.");
+      if (confirm("Deseja realmente remover este registro do banco de dados?")) {
         db.ref(path).remove();
       }
     }
 
     function applyGlobalSearch() {
-      const q = document.getElementById('global-search').value.toLowerCase();
-      document.querySelectorAll('.searchable-item').forEach(item => {
-        const text = item.innerText.toLowerCase();
-        item.style.display = text.includes(q) ? '' : 'none';
+      const term = document.getElementById('global-search').value.toLowerCase();
+      document.querySelectorAll('.searchable-item').forEach(el => {
+        const text = el.innerText.toLowerCase();
+        el.style.display = text.includes(term) ? '' : 'none';
       });
     }
-	
-	const preview = document.getElementById("ver-anc-img");
-const viewer = document.getElementById("imageViewer");
-const viewerImg = document.getElementById("imageViewerImg");
-const closeViewer = document.getElementById("closeViewer");
-
-preview.onclick = () => {
-    viewerImg.src = preview.src;
-    viewer.classList.remove("hidden");
-    viewer.classList.add("flex");
-};
-
-closeViewer.onclick = () => {
-    viewer.classList.add("hidden");
-    viewer.classList.remove("flex");
-};
-
-viewer.onclick = (e) => {
-    if (e.target === viewer) {
-        viewer.classList.add("hidden");
-        viewer.classList.remove("flex");
-    }
-};
   </script>
 </body>
 </html>
