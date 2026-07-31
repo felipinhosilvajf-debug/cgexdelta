@@ -127,7 +127,7 @@
       box-shadow: 0 0 30px rgba(0,0,0,.4);
       margin-bottom: 25px;
     }
-    .heroCGEx h1, .bannerConduta h1, .bannerNoticias h1 { font-size: 32px; color: ##1e00ff; font-weight: 700; }
+    .heroCGEx h1, .bannerConduta h1, .bannerNoticias h1 { font-size: 32px; color: #1e00ff; font-weight: 700; }
     .heroCGEx p, .bannerConduta p, .bannerNoticias p { margin-top: 15px; opacity: .85; font-size: 15px; line-height: 1.7; }
 
     .statusGrid {
@@ -182,21 +182,14 @@
     .condutaCard h2 { color: #f7c948; font-size: 18px; margin-bottom: 8px; }
     .condutaCard p { font-size: 13px; opacity: .8; line-height: 1.6; }
 
-    .fraseCG{
-
-margin-top:45px;
-
-text-align:center;
-
-font-size:24px;
-
-font-weight:700;
-
-color:#f7c948;
-
-animation:pulse 2s infinite;
-
-}
+    .fraseCG {
+      margin-top:45px;
+      text-align:center;
+      font-size:24px;
+      font-weight:700;
+      color:#f7c948;
+      animation:pulse 2s infinite;
+    }
 
     .notice {
       background: #272b33;
@@ -205,6 +198,89 @@ animation:pulse 2s infinite;
       margin-bottom: 15px;
       border-radius: 6px;
     }
+
+    /* Estilos do Boletim / Anúncios */
+    .bannerNoticias {
+      background: linear-gradient(135deg,#0f4c81,#183b63);
+      padding: 45px;
+      border-radius: 18px;
+      margin-bottom: 35px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeDown .6s;
+    }
+    .bannerNoticias::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 260px;
+      height: 260px;
+      background: rgba(255,255,255,.05);
+      border-radius: 50%;
+    }
+    .bannerNoticias h1 { font-size: 38px; color: #fff; }
+    .bannerNoticias p { margin-top: 12px; opacity: .9; line-height: 1.7; }
+
+    .timeline {
+      position: relative;
+      padding-left: 35px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: #f7c948;
+    }
+
+    .anuncio {
+      position: relative;
+      background: #1c2028;
+      border: 1px solid #2c313a;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 25px;
+      transition: .35s;
+      cursor: pointer;
+    }
+    .anuncio:hover {
+      transform: translateX(8px);
+      border-color: #f7c948;
+      box-shadow: 0 0 25px rgba(247,201,72,.18);
+    }
+    .anuncio::before {
+      content: "";
+      position: absolute;
+      left: -33px;
+      top: 28px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #f7c948;
+      box-shadow: 0 0 10px #f7c948;
+    }
+
+    .data {
+      font-size: 13px;
+      color: #9da6b5;
+      margin-bottom: 10px;
+    }
+    .tipo {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 30px;
+      background: #f7c948;
+      color: #111;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .importante { background: #9b1c1c; color: #fff; }
+    .novo { background: #1d9c57; color: #fff; }
+    .info { background: #276ef1; color: #fff; }
 
     /* Responsividade Mobile */
     .menuMobile {
@@ -294,7 +370,7 @@ animation:pulse 2s infinite;
         <span>Alto Escalão (OS)</span>
       </button>
 
-      <!-- MENU INTERNO RESTRITO (SÓ APRECE SE LOGADO OU SE SELECIONADO) -->
+      <!-- MENU INTERNO RESTRITO (SÓ APARECE SE LOGADO OU SE SELECIONADO) -->
       <div id="sub-menu-os" class="hidden mt-2 space-y-1 pl-2 border-l-2 border-indigo-500/30">
         <button onclick="switchOsTab('dashboard')" class="text-xs py-2 bg-slate-900/50 hover:bg-slate-800">
           <i class="ph-bold ph-chart-line text-indigo-400"></i> Dashboard OS
@@ -392,860 +468,359 @@ animation:pulse 2s infinite;
         <div class="info">
           <h3>🎯 Objetivo</h3>
           Capacitar todos os integrantes para realizarem atendimentos padronizados, transparentes e profissionais.
-
-</div>
-
-<div class="info">
-
-<h3>📖 Portal</h3>
-
-Todo o conteúdo presente neste sistema é considerado documentação oficial da Corregedoria Geral do Exército.
-
-</div>
-
-</div>
-
-<div class="fraseCG">
-
-"A disciplina constrói a ordem. A justiça preserva a instituição."
-
-</div>
-
-</div>
-
-</div>
-
-    <!-- ANÚNCIOS -->
-<div id="avisos" class="page">
-
-<div class="bannerConduta">
-
-<h1>📢 Central de Avisos</h1>
-
-<p>
-Bem-vindo ao Portal Oficial da Corregedoria Geral do Exército.
-Antes de iniciar qualquer atividade, leia atentamente todas as orientações abaixo.
-O desconhecimento das normas não isenta nenhum membro de responsabilidade.
-</p>
-
-</div>
-
-<div class="gridCondutas">
-
-<div class="condutaCard">
-
-<h2>📖 Manual de Direcionamento</h2>
-
-<p>
-
-Todo novo integrante deverá estudar este portal antes de iniciar atendimentos.
-
-Aqui estão reunidos todos os procedimentos utilizados oficialmente pela CGEx.
-
-</p>
-
-</div>
-
-<div class="condutaCard">
-
-<h2>📝 Modelos Oficiais</h2>
-
-<p>
-
-Os modelos de Advertência, Rebaixamento e Exílio estão disponíveis na aba<b>Modelos de Relatórios</b>.
-
-Todos possuem formato padronizado e podem ser copiados.
-
-</p>
-
-</div>
-
-<div class="condutaCard">
-
-<h2>⚖️ Critérios de Punições</h2>
-
-<p>
-
-As punições exibidas neste portal encontram-se atualizadas conforme os critérios oficiais da Corregedoria.
-
-Sempre consulte esta seção antes de emitir qualquer decisão.
-
-</p>
-
-</div>
-
-<div class="condutaCard">
-
-<h2>🚫 Comandos Proibidos</h2>
-
-<p>
-
-A lista oficial de comandos proibidos encontra-se disponível neste portal.
-
-Antes de denunciar ou aplicar punições, verifique as exceções permitidas.
-
-</p>
-
-</div>
-
-<div class="condutaCard">
-
-<h2>📚 Atualizações</h2>
-
-<p>
-
-Sempre que houver alterações em normas, procedimentos ou punições,este portal será atualizado.
-
-Utilize sempre a versão mais recente da documentação.
-
-</p>
-
-</div>
-
-<div class="condutaCard">
-
-<h2>📂 Uso Obrigatório</h2>
-
-<p>
-
-Todos os membros da Corregedoria devem utilizar este portal como referência oficial.
-
-Em caso de conflito entre informações antigas e este portal, avise para ser atualizado.
-
-</p>
-
-</div>
-
-</div>
-
-<div class="juramento">
-
-<h2>⚠️ Recomendações Importantes</h2>
-
-<ul>
-
-<li>✔ Nunca aplique punições sem provas.</li>
-
-<li>✔ Analise sempre os dois lados.</li>
-
-<li>✔ Utilize apenas modelos oficiais.</li>
-
-<li>✔ Respeite a hierarquia.</li>
-
-<li>✔ Registre todas as ações em relatório.</li>
-
-<li>✔ Seja imparcial em qualquer situação.</li>
-
-<li>✔ Em caso de dúvida, consulte um superior.</li>
-
-<li>✔ Mantenha postura profissional durante os atendimentos.</li>
-
-</ul>
-
-</div>
-
-<div class="notice" style="margin-top:30px;border-left:6px solid #28c76f;">
-
-<h2 style="color:#28c76f;">✅ Situação do Portal</h2>
-
-<p>
-
-<strong>Versão:</strong> 1.0<br><strong>Status:</strong> Online<br><strong>Documentação:</strong> Atualizada<br><strong>Uso:</strong> Obrigatório para membros da CGEx
-
-</p>
-
-</div>
-
-<div class="fraseCG">
-
-"A informação correta evita erros. A documentação fortalece a Corregedoria."
-
-</div>
-
-</div>
-
-<div id="anuncios" class="page">
-
-<style>
-
-.bannerNoticias{
-
-background:linear-gradient(135deg,#0f4c81,#183b63);
-padding:45px;
-border-radius:18px;
-margin-bottom:35px;
-position:relative;
-overflow:hidden;
-animation:fadeDown .6s;
-
-}
-
-.bannerNoticias::after{
-
-content:"";
-position:absolute;
-right:-80px;
-top:-80px;
-width:260px;
-height:260px;
-background:rgba(255,255,255,.05);
-border-radius:50%;
-
-}
-
-.bannerNoticias h1{
-
-font-size:38px;
-
-}
-
-.bannerNoticias p{
-
-margin-top:12px;
-opacity:.9;
-line-height:1.7;
-
-}
-
-.timeline{
-
-position:relative;
-padding-left:35px;
-
-}
-
-.timeline::before{
-
-content:"";
-position:absolute;
-left:10px;
-top:0;
-bottom:0;
-width:3px;
-background:#f7c948;
-
-}
-
-.anuncio{
-
-position:relative;
-background:#1c2028;
-border:1px solid #2c313a;
-border-radius:15px;
-padding:25px;
-margin-bottom:25px;
-transition:.35s;
-
-}
-
-.anuncio:hover{
-
-transform:translateX(8px);
-border-color:#f7c948;
-box-shadow:0 0 25px rgba(247,201,72,.18);
-
-}
-
-.anuncio::before{
-
-content:"";
-position:absolute;
-left:-33px;
-top:28px;
-width:18px;
-height:18px;
-border-radius:50%;
-background:#f7c948;
-box-shadow:0 0 10px #f7c948;
-
-}
-
-.data{
-
-font-size:13px;
-color:#9da6b5;
-margin-bottom:10px;
-
-}
-
-.tipo{
-
-display:inline-block;
-padding:5px 12px;
-border-radius:30px;
-background:#f7c948;
-color:#111;
-font-size:12px;
-font-weight:bold;
-margin-bottom:15px;
-
-}
-
-.importante{
-
-background:#9b1c1c;
-
-color:#fff;
-
-}
-
-.novo{
-
-background:#1d9c57;
-
-color:#fff;
-
-}
-
-.info{
-
-background:#276ef1;
-
-color:#fff;
-
-}
-
-</style>
-
-<div class="bannerNoticias">
-
-<h1>📢 Boletim Oficial da Corregedoria</h1>
-
-<p>
-
-Todos os comunicados oficiais da Corregedoria Geral do Exército serão publicados nesta página.
-
-Sempre consulte os anúncios antes de iniciar seus atendimentos.
-
-</p>
-
-</div>
-
-<div class="timeline">
-
-<div class="anuncio">
-
-<div class="data">
-
-📅 28/07/2026 • 01:10
-
-</div>
-
-<span class="tipo importante">
-
-IMPORTANTE
-
-</span>
-
-<h2>Critérios de Punições</h2>
-
-<p>
-
-Os critérios de punições da CGEx foram atualizados.
-
-Todos os membros deverão utilizar este portal como referência e avisar se ocorrer divergências.
-
-</p>
-
-</div>
-
-<div class="anuncio">
-
-<div class="data">
-
-📅 28/07/2026 • 01:10
-
-</div>
-
-<span class="tipo novo">
-
-NOVO
-
-</span>
-
-<h2>Portal Oficial disponibilizado</h2>
-
-<p>
-
-Foi disponibilizado o Portal Oficial da Corregedoria contendo documentação, modelos, comandos proibidos e procedimentos administrativos.
-
-</p>
-
-</div>
-
-<div class="anuncio">
-
-<div class="data">
-
-📅 28/07/2026 • 01:10
-
-</div>
-
-<span class="tipo info">
-
-INFORMATIVO
-
-</span>
-
-<h2>Padronização de Relatórios</h2>
-
-<p>
-
-Todos os relatórios deverão utilizar exclusivamente os modelos disponibilizados neste portal.
-
-Modelos antigos deixam de ser considerados oficiais.
-
-</p>
-
-</div>
-
-<div class="anuncio">
-
-<div class="data">
-
-📅 28/07/2026 • 01:10
-
-</div>
-
-<span class="tipo importante">
-
-IMPORTANTE
-
-</span>
-
-<h2>Consulta obrigatória da documentação</h2>
-
-<p>
-
-Antes de qualquer punição, consulte a documentação oficial disponível neste sistema.
-
-Decisões tomadas em desacordo com os critérios da CGEx poderão ser revistas.
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-<div id="punicoes" class="page">
-
-<h1>⚖️ Punições Aplicadas pela CGEx</h1>
-
-<br>
-
-<div class="notice">
-
-<h2 style="color:#f7c948;">⚠️ ADVERTÊNCIA</h2>
-
-<ul>
-
-<li>Má conduta.</li>
-
-<li>Falta de gramática.</li>
-
-<li>Pedir free / treino.</li>
-
-<li>Abreviação de palavras / gírias.</li>
-
-<li>Abate de civis sem justificativa.</li>
-
-<li>Uso de fardamento incorreto.</li>
-
-<li>Uso de exploits para realizar JJs dentro do jogo.</li>
-
-<li>Abuso de comando <b>.sit</b> (abuso de bugs que quebram o role play no EB).</li>
-
-<li>Ausência fora de área AFK.</li>
-
-<li>Música inapropriada dentro do quartel.</li>
-
-<li>Prisão de forma abusiva (segurar a pessoa na algema por minutos sem justificativa plausível).</li>
-
-<li>Atrapalhar o trabalho da CGEx (quando o militar do EB atrapalha a ação de integrante da CGEx em sala enquanto ele estiver resolvendo chamado, mesmo após avisos).</li>
-
-<li>Abuso de poder.</li>
-
-<li>Mencionar outro EB de forma sugestiva para angariar usuários.</li>
-
-</ul>
-
-</div>
-
-<br>
-
-<div class="notice">
-
-<h2 style="color:#ff9f43;">🔻 REBAIXAMENTO</h2>
-
-<p><b>Limite:</b> 4 rebaixamentos.</p>
-
-<ul>
-
-<li>Omissão ao entregar a patente do aprovado após seis horas do treino. <b>(2 rebaixamentos)</b></li>
-
-<li>Rebaixamento não autorizado pela CGEx. <b>(2 rebaixamentos)</b> +1 rebaixamento para cada pessoa rebaixada.</li>
-
-<li>Aplicar treinamento incorretamente. <b>(1 rebaixamento)</b></li>
-
-<li>Aplicar recrutamento de forma errada. <b>(1 rebaixamento)</b></li>
-
-<li>Uso de comandos proibidos. <b>(1 rebaixamento)</b></li>
-
-<li>Acúmulo de 3 advertências. <b>(1 rebaixamento)</b></li>
-
-<li>Free patente. <b>(3 rebaixamentos)</b></li>
-
-<li>Free rank em excesso. <b>(Rebaixamento para Recruta + Exílio)</b></li>
-
-<li>Reincidência no uso de exploits para realizar JJs, mesmo após advertência. <b>(1 rebaixamento)</b></li>
-
-</ul>
-
-</div>
-
-<br>
-
-<div class="notice">
-
-<h2 style="color:#ff4d4d;">❗ EXÍLIO / BANIMENTO</h2>
-
-<ul>
-
-<li>Uso de scripts para obter vantagens ou prejudicar militares.</li>
-
-<li>Abuso de bugs (bug exploit).</li>
-
-<li>Difamação à nossa instituição.</li>
-
-<li>Participar de ambientes que conspiram contra o EB.</li>
-
-<li>Fraude / golpe.</li>
-
-<li>Raid.</li>
-
-<li>Assédio.</li>
-
-<li>Conteúdo discriminatório / discurso de ódio.</li>
-
-<li>Conteúdo pornográfico / gore.</li>
-
-<li>Divulgação de outro EB.</li>
-
-<li>Participar de outro EB com envolvimento no desenvolvimento dele.</li>
-
-</ul>
-
-</div>
-
-<br>
-
-<div class="notice">
-
-<h2 style="color:#64d2ff;">❎ REVOGAÇÃO</h2>
-
-<p>
-
-Aplicável apenas quando o militar for rebaixado sem a devida documentação, relatório formal ou tiver promovido um militar por engano.
-
-</p>
-
-<p>
-
-Antes da revogação, confirme que a ação não foi realizada por terceiros responsáveis, como:
-
-</p>
-
-<ul>
-
-<li>Delta</li>
-
-<li>Jottzk</li>
-
-<li>GengarMelhorPoke</li>
-
-<li>el gandra</li>
-
-<li>Patrono</li>
-
-</ul>
-
-</div>
-
-</div>
-
-<div id="comandos" class="page">
-
-<h1>🚫 Comandos Proibidos</h1>
-
-<p style="margin-top:10px;opacity:.8;">
-<b>CGEx - Corregedoria Geral do Exército</b>
-</p>
-
-<br>
-
-<div class="notice">
-
-<h2 style="color:#f7c948;">⚠️ Atenção</h2>
-
-<p>
-O uso indevido dos comandos abaixo pode resultar em punições disciplinares.
-Algumas exceções se aplicam conforme a hierarquia ou permissões especiais.
-</p>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#f7c948;">📌 DISFARÇAR</h2>
-
-<ul>
-<li><b>TERMINANTEMENTE PROIBIDO PARA TODOS.</b></li>
-</ul>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#f7c948;">📌 TITLE</h2>
-
-<ul>
-<li>Expressamente proibido em servidores públicos.</li>
-</ul>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#f7c948;">📌 CMDBAR2</h2>
-
-<p><b>Proibido.</b></p>
-
-<p><b>Patentes autorizadas:</b></p>
-
-<ul>
-
-<li>Corregedor+ da SGEx</li>
-
-<li>Sub Criadores</li>
-
-</ul>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#f7c948;">📌 COUNTDOWN</h2>
-
-<ul>
-<li>Expressamente proibido em servidores públicos.</li>
-</ul>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#f7c948;">📌 HipHeight e derivados</h2>
-
-<ul>
-<li>Expressamente proibido em servidores públicos.</li>
-</ul>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#f7c948;">📌 CHAR</h2>
-
-<p><b>Patentes autorizadas:</b></p>
-
-<ul>
-
-<li>Membros com Gamepass (Elite Club, Vice Club e Light Club).</li>
-
-<li>Aspirantes+ (apenas se o char for de cunho militar).</li>
-
-<li>Char's com conteúdo NSFW/Gore ou que violem as regras da comunidade são estritamente proibidos.</li>
-
-<li>O comando é considerado proibido quando utilizado em outra pessoa ou quando quebra as regras da comunidade.</li>
-
-</ul>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#f7c948;">📌 KICK</h2>
-
-<p><b>Proibido em servidores públicos.</b></p>
-
-<p><b>Patentes autorizadas:</b></p>
-
-<ul>
-
-<li>Apenas membros da Corregedoria Geral do Exército (CGEx).</li>
-
-</ul>
-
-<p>
-
-O comando <b>KICK</b> somente poderá ser utilizado para fins administrativos.
-
-</p>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#f7c948;">📌 Bubblechat</h2>
-
-<ul>
-
-<li>Expressamente proibido para todos, exceto Sub Criadores.</li>
-
-</ul>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#f7c948;">📌 CLONE</h2>
-
-<ul>
-
-<li>Expressamente proibido para todos em servidores públicos.</li>
-
-</ul>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#f7c948;">📌 Forcefield, God e derivados</h2>
-
-<ul>
-
-<li>Proibido para todos, exceto Sócios e Sub Criadores+.</li>
-
-</ul>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#f7c948;">📌 H, M, SM e derivados</h2>
-
-<ul>
-
-<li>Expressamente proibido para todos em servidores públicos.</li>
-
-</ul>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#f7c948;">📌 INVISIBLE</h2>
-
-<p><b>Proibido.</b></p>
-
-<p><b>Patentes autorizadas:</b></p>
-
-<ul>
-
-<li>Coordenadores+ da CGEx (apenas para fins administrativos).</li>
-
-<li>Vice-Presidentes.</li>
-
-<li>Presidente.</li>
-
-<li>Sócios.</li>
-
-<li>Sub Criadores.</li>
-
-</ul>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#f7c948;">📌 Refresh (ref) e Respawn (res)</h2>
-
-<ul>
-
-<li>É proibido utilizar estes comandos em pessoas desconhecidas.</li>
-
-<li>Utilize apenas em si mesmo e sempre com moderação.</li>
-
-</ul>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#ff4d4d;">📌 Kill, Explode, Punish, Ice e derivados</h2>
-
-<ul>
-
-<li><b>COMPLETAMENTE PROIBIDOS PARA TODOS.</b></li>
-
-</ul>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#f7c948;">📌 TO</h2>
-
-<ul>
-
-<li>Expressamente proibido utilizar <b>:to</b> em pessoas que não autorizaram ou que você não conheça.</li>
-
-</ul>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#64d2ff;">📨 Denúncias</h2>
-
-<p>
-
-Caso você presencie alguém utilizando qualquer um destes comandos de forma irregular, abra um ticket na Corregedoria informando:
-
-</p>
-
-<ul>
-
-<li>Nickname do infrator.</li>
-
-<li>Provas (vídeo ou imagens).</li>
-
-<li>Contexto da ocorrência.</li>
-
-</ul>
-
-</div>
-
-</div>
-
-<div id="relatorios" class="page">
-
-<h1>📝 Modelos Oficiais de Relatórios</h1>
-
-<p style="margin-top:10px;opacity:.8;">
-Os modelos abaixo devem ser utilizados pelos membros da Corregedoria Geral do Exército (CGEx). Mantenha sempre as informações completas e as comprovações anexadas.
-</p>
-
-<br>
-
-<div class="notice">
-
-<h2 style="color:#FFD700;">⚠️ Modelo de Advertência</h2>
-<button onclick="copiar('adv')">📋 Copiar Modelo</button>
+        </div>
+        <div class="info">
+          <h3>📖 Portal</h3>
+          Todo o conteúdo presente neste sistema é considerado documentação oficial da Corregedoria Geral do Exército.
+        </div>
+      </div>
+
+      <div class="fraseCG">
+        "A disciplina constrói a ordem. A justiça preserva a instituição."
+      </div>
+    </div>
+
+    <!-- AVISOS INICIAIS -->
+    <div id="avisos" class="page">
+      <div class="bannerConduta">
+        <h1>📢 Central de Avisos</h1>
+        <p>
+          Bem-vindo ao Portal Oficial da Corregedoria Geral do Exército.
+          Antes de iniciar qualquer atividade, leia atentamente todas as orientações abaixo.
+          O desconhecimento das normas não isenta nenhum membro de responsabilidade.
+        </p>
+      </div>
+
+      <div class="gridCondutas">
+        <div class="condutaCard">
+          <h2>📖 Manual de Direcionamento</h2>
+          <p>
+            Todo novo integrante deverá estudar este portal antes de iniciar atendimentos.
+            Aqui estão reunidos todos os procedimentos utilizados oficialmente pela CGEx.
+          </p>
+        </div>
+        <div class="condutaCard">
+          <h2>📝 Modelos Oficiais</h2>
+          <p>
+            Os modelos de Advertência, Rebaixamento e Exílio estão disponíveis na aba <b>Modelos de Relatórios</b>.
+            Todos possuem formato padronizado e podem ser copiados.
+          </p>
+        </div>
+        <div class="condutaCard">
+          <h2>⚖️ Critérios de Punições</h2>
+          <p>
+            As punições exibidas neste portal encontram-se atualizadas conforme os critérios oficiais da Corregedoria.
+            Sempre consulte esta seção antes de emitir qualquer decisão.
+          </p>
+        </div>
+        <div class="condutaCard">
+          <h2>🚫 Comandos Proibidos</h2>
+          <p>
+            A lista oficial de comandos proibidos encontra-se disponível neste portal.
+            Antes de denunciar ou aplicar punições, verifique as exceções permitidas.
+          </p>
+        </div>
+        <div class="condutaCard">
+          <h2>📚 Atualizações</h2>
+          <p>
+            Sempre que houver alterações em normas, procedimentos ou punições, este portal será atualizado.
+            Utilize sempre a versão mais recente da documentação.
+          </p>
+        </div>
+        <div class="condutaCard">
+          <h2>📂 Uso Obrigatório</h2>
+          <p>
+            Todos os membros da Corregedoria devem utilizar este portal como referência oficial.
+            Em caso de conflito entre informações antigas e este portal, avise para ser atualizado.
+          </p>
+        </div>
+      </div>
+
+      <div class="manual" style="margin-top:30px;">
+        <h2>⚠️ Recomendações Importantes</h2>
+        <ul>
+          <li>✔ Nunca aplique punições sem provas.</li>
+          <li>✔ Analise sempre os dois lados.</li>
+          <li>✔ Utilize apenas modelos oficiais.</li>
+          <li>✔ Respeite a hierarquia.</li>
+          <li>✔ Registre todas as ações em relatório.</li>
+          <li>✔ Seja imparcial em qualquer situação.</li>
+          <li>✔ Em caso de dúvida, consulte um superior.</li>
+          <li>✔ Mantenha postura profissional durante os atendimentos.</li>
+        </ul>
+      </div>
+
+      <div class="notice" style="margin-top:30px; border-left:6px solid #28c76f;">
+        <h2 style="color:#28c76f;">✅ Situação do Portal</h2>
+        <p>
+          <strong>Versão:</strong> 1.0<br>
+          <strong>Status:</strong> Online<br>
+          <strong>Documentação:</strong> Atualizada<br>
+          <strong>Uso:</strong> Obrigatório para membros da CGEx
+        </p>
+      </div>
+
+      <div class="fraseCG">
+        "A informação correta evita erros. A documentação fortalece a Corregedoria."
+      </div>
+    </div>
+
+    <!-- ANÚNCIOS DINÂMICOS -->
+    <div id="anuncios" class="page">
+      <div class="bannerNoticias flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div>
+          <h1>📢 Boletim Oficial da Corregedoria</h1>
+          <p>
+            Todos os comunicados oficiais da Corregedoria Geral do Exército serão publicados nesta página.
+            Sempre consulte os anúncios antes de iniciar seus atendimentos. Clique em um card para ler o anúncio completo.
+          </p>
+        </div>
+        <button onclick="openAnuncioModal()" class="auth-only px-5 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg transition flex items-center gap-2 whitespace-nowrap">
+          <i class="ph-bold ph-plus text-lg"></i>
+          <span>Novo Anúncio</span>
+        </button>
+      </div>
+
+      <div class="timeline" id="anuncios-container">
+        <!-- Renderizado via JavaScript / Firebase -->
+      </div>
+    </div>
+
+    <!-- PUNIÇÕES CGEx -->
+    <div id="punicoes" class="page">
+      <h1>⚖️ Punições Aplicadas pela CGEx</h1>
+      <br>
+      <div class="notice">
+        <h2 style="color:#f7c948;">⚠️ ADVERTÊNCIA</h2>
+        <ul>
+          <li>Má conduta.</li>
+          <li>Falta de gramática.</li>
+          <li>Pedir free / treino.</li>
+          <li>Abreviação de palavras / gírias.</li>
+          <li>Abate de civis sem justificativa.</li>
+          <li>Uso de fardamento incorreto.</li>
+          <li>Uso de exploits para realizar JJs dentro do jogo.</li>
+          <li>Abuso de comando <b>.sit</b> (abuso de bugs que quebram o role play no EB).</li>
+          <li>Ausência fora de área AFK.</li>
+          <li>Música inapropriada dentro do quartel.</li>
+          <li>Prisão de forma abusiva (segurar a pessoa na algema por minutos sem justificativa plausível).</li>
+          <li>Atrapalhar o trabalho da CGEx (quando o militar do EB atrapalha a ação de integrante da CGEx em sala enquanto ele estiver resolvendo chamado, mesmo após avisos).</li>
+          <li>Abuso de poder.</li>
+          <li>Mencionar outro EB de forma sugestiva para angariar usuários.</li>
+        </ul>
+      </div>
+      <br>
+      <div class="notice">
+        <h2 style="color:#ff9f43;">🔻 REBAIXAMENTO</h2>
+        <p><b>Limite:</b> 4 rebaixamentos.</p>
+        <ul>
+          <li>Omissão ao entregar a patente do aprovado após seis horas do treino. <b>(2 rebaixamentos)</b></li>
+          <li>Rebaixamento não autorizado pela CGEx. <b>(2 rebaixamentos)</b> +1 rebaixamento para cada pessoa rebaixada.</li>
+          <li>Aplicar treinamento incorretamente. <b>(1 rebaixamento)</b></li>
+          <li>Aplicar recrutamento de forma errada. <b>(1 rebaixamento)</b></li>
+          <li>Uso de comandos proibidos. <b>(1 rebaixamento)</b></li>
+          <li>Acúmulo de 3 advertências. <b>(1 rebaixamento)</b></li>
+          <li>Free patente. <b>(3 rebaixamentos)</b></li>
+          <li>Free rank em excesso. <b>(Rebaixamento para Recruta + Exílio)</b></li>
+          <li>Reincidência no uso de exploits para realizar JJs, mesmo após advertência. <b>(1 rebaixamento)</b></li>
+        </ul>
+      </div>
+      <br>
+      <div class="notice">
+        <h2 style="color:#ff4d4d;">❗ EXÍLIO / BANIMENTO</h2>
+        <ul>
+          <li>Uso de scripts para obter vantagens ou prejudicar militares.</li>
+          <li>Abuso de bugs (bug exploit).</li>
+          <li>Difamação à nossa instituição.</li>
+          <li>Participar de ambientes que conspiram contra o EB.</li>
+          <li>Fraude / golpe.</li>
+          <li>Raid.</li>
+          <li>Assédio.</li>
+          <li>Conteúdo discriminatório / discurso de ódio.</li>
+          <li>Conteúdo pornográfico / gore.</li>
+          <li>Divulgação de outro EB.</li>
+          <li>Participar de outro EB com envolvimento no desenvolvimento dele.</li>
+        </ul>
+      </div>
+      <br>
+      <div class="notice">
+        <h2 style="color:#64d2ff;">❎ REVOGAÇÃO</h2>
+        <p>
+          Aplicável apenas quando o militar for rebaixado sem a devida documentação, relatório formal ou tiver promovido um militar por engano.
+        </p>
+        <p>
+          Antes da revogação, confirme que a ação não foi realizada por terceiros responsáveis, como:
+        </p>
+        <ul>
+          <li>Delta</li>
+          <li>Jottzk</li>
+          <li>GengarMelhorPoke</li>
+          <li>el gandra</li>
+          <li>Patrono</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- COMANDOS PROIBIDOS -->
+    <div id="comandos" class="page">
+      <h1>🚫 Comandos Proibidos</h1>
+      <p style="margin-top:10px;opacity:.8;">
+        <b>CGEx - Corregedoria Geral do Exército</b>
+      </p>
+      <br>
+      <div class="notice">
+        <h2 style="color:#f7c948;">⚠️ Atenção</h2>
+        <p>
+          O uso indevido dos comandos abaixo pode resultar em punições disciplinares.
+          Algumas exceções se aplicam conforme a hierarquia ou permissões especiais.
+        </p>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#f7c948;">📌 DISFARÇAR</h2>
+        <ul>
+          <li><b>TERMINANTEMENTE PROIBIDO PARA TODOS.</b></li>
+        </ul>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#f7c948;">📌 TITLE</h2>
+        <ul>
+          <li>Expressamente proibido em servidores públicos.</li>
+        </ul>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#f7c948;">📌 CMDBAR2</h2>
+        <p><b>Proibido.</b></p>
+        <p><b>Patentes autorizadas:</b></p>
+        <ul>
+          <li>Corregedor+ da SGEx</li>
+          <li>Sub Criadores</li>
+        </ul>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#f7c948;">📌 COUNTDOWN</h2>
+        <ul>
+          <li>Expressamente proibido em servidores públicos.</li>
+        </ul>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#f7c948;">📌 HipHeight e derivados</h2>
+        <ul>
+          <li>Expressamente proibido em servidores públicos.</li>
+        </ul>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#f7c948;">📌 CHAR</h2>
+        <p><b>Patentes autorizadas:</b></p>
+        <ul>
+          <li>Membros com Gamepass (Elite Club, Vice Club e Light Club).</li>
+          <li>Aspirantes+ (apenas se o char for de cunho militar).</li>
+          <li>Char's com conteúdo NSFW/Gore ou que violem as regras da comunidade são estritamente proibidos.</li>
+          <li>O comando é considerado proibido quando utilizado em outra pessoa ou quando quebra as regras da comunidade.</li>
+        </ul>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#f7c948;">📌 KICK</h2>
+        <p><b>Proibido em servidores públicos.</b></p>
+        <p><b>Patentes autorizadas:</b></p>
+        <ul>
+          <li>Apenas membros da Corregedoria Geral do Exército (CGEx).</li>
+        </ul>
+        <p>O comando <b>KICK</b> somente poderá ser utilizado para fins administrativos.</p>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#f7c948;">📌 Bubblechat</h2>
+        <ul>
+          <li>Expressamente proibido para todos, exceto Sub Criadores.</li>
+        </ul>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#f7c948;">📌 CLONE</h2>
+        <ul>
+          <li>Expressamente proibido para todos em servidores públicos.</li>
+        </ul>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#f7c948;">📌 Forcefield, God e derivados</h2>
+        <ul>
+          <li>Proibido para todos, exceto Sócios e Sub Criadores+.</li>
+        </ul>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#f7c948;">📌 H, M, SM e derivados</h2>
+        <ul>
+          <li>Expressamente proibido para todos em servidores públicos.</li>
+        </ul>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#f7c948;">📌 INVISIBLE</h2>
+        <p><b>Proibido.</b></p>
+        <p><b>Patentes autorizadas:</b></p>
+        <ul>
+          <li>Coordenadores+ da CGEx (apenas para fins administrativos).</li>
+          <li>Vice-Presidentes.</li>
+          <li>Presidente.</li>
+          <li>Sócios.</li>
+          <li>Sub Criadores.</li>
+        </ul>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#f7c948;">📌 Refresh (ref) e Respawn (res)</h2>
+        <ul>
+          <li>É proibido utilizar estes comandos em pessoas desconhecidas.</li>
+          <li>Utilize apenas em si mesmo e sempre com moderação.</li>
+        </ul>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#ff4d4d;">📌 Kill, Explode, Punish, Ice e derivados</h2>
+        <ul>
+          <li><b>COMPLETAMENTE PROIBIDOS PARA TODOS.</b></li>
+        </ul>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#f7c948;">📌 TO</h2>
+        <ul>
+          <li>Expressamente proibido utilizar <b>:to</b> em pessoas que não autorizaram ou que você não conheça.</li>
+        </ul>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#64d2ff;">📨 Denúncias</h2>
+        <p>Caso você presencie alguém utilizando qualquer um destes comandos de forma irregular, abra um ticket na Corregedoria informando:</p>
+        <ul>
+          <li>Nickname do infrator.</li>
+          <li>Provas (vídeo ou imagens).</li>
+          <li>Contexto da ocorrência.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MODELOS DE RELATÓRIOS -->
+    <div id="relatorios" class="page">
+      <h1>📝 Modelos Oficiais de Relatórios</h1>
+      <p style="margin-top:10px;opacity:.8;">
+        Os modelos abaixo devem ser utilizados pelos membros da Corregedoria Geral do Exército (CGEx). Mantenha sempre as informações completas e as comprovações anexadas.
+      </p>
+      <br>
+
+      <div class="notice">
+        <h2 style="color:#FFD700;">⚠️ Modelo de Advertência</h2>
+        <button onclick="copiar('adv')" class="px-3 py-1 bg-slate-800 hover:bg-slate-700 rounded text-xs mt-2 mb-2">📋 Copiar Modelo</button>
 <pre id="adv" style="white-space:pre-wrap;color:#fff;font-family:Consolas,monospace;">
-
 **《 ADVERTÊNCIA 》
 • | Responsável:
 • | Função: Corregedoria.
@@ -1259,17 +834,13 @@ Os modelos abaixo devem ser utilizados pelos membros da Corregedoria Geral do Ex
 ♤ ——————————————— ♤
 • | Data/Hora:
 • | Comprovações:**
-
 </pre>
+      </div>
 
-</div>
-
-<div class="notice">
-
-<h2 style="color:#FF9F43;">🔻 Modelo de Rebaixamento</h2>
-<button onclick="copiar('reb')">📋 Copiar Modelo</button>
+      <div class="notice">
+        <h2 style="color:#FF9F43;">🔻 Modelo de Rebaixamento</h2>
+        <button onclick="copiar('reb')" class="px-3 py-1 bg-slate-800 hover:bg-slate-700 rounded text-xs mt-2 mb-2">📋 Copiar Modelo</button>
 <pre id="reb" style="white-space:pre-wrap;color:#fff;font-family:Consolas,monospace;">
-
 **《 REBAIXAMENTO 》
 ♤ ——————————————— ♤
 • | Responsável: 
@@ -1286,17 +857,13 @@ Os modelos abaixo devem ser utilizados pelos membros da Corregedoria Geral do Ex
 • | Observações: 
  ♤—————————————— ♤
 • | Data/Hora: 
-
 </pre>
+      </div>
 
-</div>
-
-<div class="notice">
-
-<h2 style="color:#FF4D4D;">❗ Modelo de Solicitação de Exílio</h2>
-<button onclick="copiar('ex')">📋 Copiar Modelo</button>
+      <div class="notice">
+        <h2 style="color:#FF4D4D;">❗ Modelo de Solicitação de Exílio</h2>
+        <button onclick="copiar('ex')" class="px-3 py-1 bg-slate-800 hover:bg-slate-700 rounded text-xs mt-2 mb-2">📋 Copiar Modelo</button>
 <pre id="ex" style="white-space:pre-wrap;color:#fff;font-family:Consolas,monospace;">
-
 :CGEx: SOLICITAÇÃO DE EXÍLIO :CGEx:
 ———————————————
 • | Responsável: 
@@ -1311,544 +878,187 @@ Os modelos abaixo devem ser utilizados pelos membros da Corregedoria Geral do Ex
 ———————————————
 • | Data-Hora: O Discord fornece. 
 • | Comprovações:
-
 </pre>
-
-</div>
-
-</div>
-
-<div id="frases" class="page">
-
-<h1>🚫 Punições do Discord</h1>
-
-<p style="margin-top:10px;opacity:.8;">
-<b>Administração | EB do Delta</b>
-</p>
-
-<br>
-
-<div class="notice">
-
-<h2 style="color:#f7c948;">📋 Informações Gerais</h2>
-
-<p>
-Nesta página estão descritas as regras da comunidade do Discord e os tipos de punições aplicáveis em caso de descumprimento.
-</p>
-
-<ul>
-
-<li><b>(L)</b> – Infrações Leves: <b>Mute de 10 minutos a 1 hora.</b></li>
-
-<li><b>(M)</b> – Infrações Moderadas: <b>Mute de 2 horas a 8 horas.</b></li>
-
-<li><b>(G)</b> – Infrações Graves: <b>Mute de 12 horas a 3 dias.</b></li>
-
-<li><b>(PB)</b> – Infrações Passíveis de Ban: <b>1 a 7 dias</b> (reincidência: <b>7 a 30 dias</b>).</li>
-
-<li><b>(EG)</b> – Infrações Extra Graves: <b>Banimento imediato (30 dias até permanente).</b></li>
-
-</ul>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#7CFC00;">🟢 (L) Infrações Leves</h2>
-
-<ul>
-
-<li>Discussões em chat.</li>
-
-<li>Uso de palavras de baixo calão simples.</li>
-
-<li>Mau uso dos canais.</li>
-
-<li>Incentivar brigas em chat.</li>
-
-<li>Flood (mensagens repetidas).</li>
-
-<li>Uso excessivo de CAPS LOCK.</li>
-
-<li>Pingar @Oficiais do Exército+ sem necessidade.</li>
-
-</ul>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#FFD700;">🟡 (M) Infrações Moderadas</h2>
-
-<ul>
-
-<li>Uso de palavras de baixo calão graves.</li>
-
-<li>Ofensas a @Oficiais do Exército+.</li>
-
-<li>Brincadeiras maliciosas.</li>
-
-<li>Assuntos inapropriados em chat.</li>
-
-</ul>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#FF8C00;">🟠 (G) Infrações Graves</h2>
-
-<ul>
-
-<li>Divulgação indireta no servidor.</li>
-
-<li>Bagunça em chat ou call.</li>
-
-<li>Tentar se passar por @[SCR] Sub Criador+.</li>
-
-<li>Ofensas diretas e graves.</li>
-
-<li>Spam.</li>
-
-<li>Conteúdo gore ou assuntos gore.</li>
-
-<li>Desobedecer ordens dentro do RP sem justificativa.</li>
-
-<li>Quebra dos Termos de Serviço do Discord.</li>
-
-</ul>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#FF4D4D;">🔴 (PB) Infrações Passíveis de Ban</h2>
-
-<ul>
-
-<li>Divulgação no servidor.</li>
-
-<li>Divulgação indireta no servidor.</li>
-
-<li>Compartilhamento de conta.</li>
-
-<li>Uso de contas alternativas para burlar punições.</li>
-
-</ul>
-
-</div>
-
-<div class="notice">
-
-<h2 style="color:#8B0000;">⛔ (EG) Infrações Extra Graves</h2>
-
-<ul>
-
-<li>Divulgação no privado.</li>
-
-<li>Imagens ou assuntos de pedofilia.</li>
-
-<li>Imagens ou assuntos de zoofilia.</li>
-
-<li>Imagens ou assuntos de necrofilia.</li>
-
-<li>Imagens ou assuntos homofóbicas.</li>
-
-<li>Imagens ou assuntos nazistas.</li>
-
-<li>Imagens ou assuntos que sejam contra os Direitos Humanos.</li>
-
-<li>Incentivo ou imagens de automutilação.</li>
-
-<li>Ameaças reais.</li>
-
-<li>Tentativa de invadir contas.</li>
-
-</ul>
-
-</div>
-
-</div>
-
-<div id="condutas" class="page">
-
-<style>
-
-.bannerConduta{
-
-background:linear-gradient(135deg,#f7c948,#c9a227);
-padding:45px;
-border-radius:18px;
-color:#111;
-margin-bottom:30px;
-box-shadow:0 0 35px rgba(247,201,72,.35);
-
-animation:fadeDown .7s;
-
-}
-
-.bannerConduta h1{
-
-font-size:clamp(28px,5vw,48px);
-margin-bottom:10px;
-
-}
-
-.bannerConduta p{
-
-font-size:17px;
-font-weight:500;
-
-}
-
-.gridCondutas{
-
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:22px;
-
-}
-
-.condutaCard{
-
-background:#1b1d22;
-border:1px solid #2d3038;
-border-radius:14px;
-padding:25px;
-transition:.35s;
-cursor:pointer;
-position:relative;
-overflow:hidden;
-
-}
-
-.condutaCard::before{
-
-content:"";
-position:absolute;
-left:0;
-top:0;
-height:4px;
-width:100%;
-background:#f7c948;
-transform:scaleX(0);
-transition:.35s;
-
-}
-
-.condutaCard:hover::before{
-
-transform:scaleX(1);
-
-}
-
-.condutaCard:hover{
-
-transform:translateY(-8px);
-box-shadow:0 0 25px rgba(247,201,72,.2);
-
-}
-
-.condutaCard h2{
-
-margin-bottom:15px;
-color:#f7c948;
-
-}
-
-.condutaCard ul{
-
-margin-left:20px;
-
-}
-
-.condutaCard li{
-
-margin-bottom:10px;
-
-}
-
-.juramento{
-
-margin-top:40px;
-background:#181b21;
-padding:30px;
-border-radius:15px;
-border-left:6px solid #f7c948;
-
-}
-
-.juramento h2{
-
-color:#f7c948;
-margin-bottom:20px;
-
-}
-
-.juramento p{
-
-line-height:1.8;
-
-}
-
-.progresso{
-
-margin-top:35px;
-
-}
-
-.barra{
-
-width:100%;
-height:14px;
-background:#30343c;
-border-radius:50px;
-overflow:hidden;
-
-}
-
-.preenchimento{
-
-height:100%;
-width:100%;
-background:linear-gradient(90deg,#f7c948,#ffd95a);
-animation:load 2s;
-
-}
-
-.fraseFinal{
-
-margin-top:40px;
-text-align:center;
-font-size:22px;
-font-weight:600;
-color:#f7c948;
-
-animation:pulse 2s infinite;
-
-}
-
-@keyframes pulse{
-
-50%{
-
-transform:scale(1.03);
-
-}
-
-}
-
-@keyframes fadeDown{
-
-from{
-
-opacity:0;
-transform:translateY(-30px);
-
-}
-
-to{
-
-opacity:1;
-transform:translateY(0);
-
-}
-
-}
-
-@keyframes load{
-
-from{
-
-width:0%;
-
-}
-
-to{
-
-width:100%;
-
-}
-
-}
-
-</style>
-
-<div class="bannerConduta">
-
-<h1>📖 Manual de Conduta da Corregedoria</h1>
-
-<p>
-A Corregedoria representa a imparcialidade, disciplina e justiça dentro do Exército Brasileiro do Delta.
-Cada decisão tomada por um Corregedor reflete diretamente na credibilidade da instituição.
-</p>
-
-</div>
-
-<div class="gridCondutas">
-
-<div class="condutaCard">
-
-<h2>⚖️ Imparcialidade</h2>
-
-<ul>
-
-<li>Nunca favoreça amigos.</li>
-
-<li>Nunca prejudique desafetos.</li>
-
-<li>Analise apenas fatos.</li>
-
-<li>Toda decisão deve possuir fundamento.</li>
-
-<li>A prova sempre prevalece sobre opiniões.</li>
-
-</ul>
-
-</div>
-
-<div class="condutaCard">
-
-<h2>🛡️ Postura</h2>
-
-<ul>
-
-<li>Mantenha educação durante todo atendimento.</li>
-
-<li>Nunca provoque usuários.</li>
-
-<li>Evite discussões desnecessárias.</li>
-
-<li>Seja profissional mesmo sob pressão.</li>
-
-<li>Respeite toda a hierarquia.</li>
-
-</ul>
-
-</div>
-
-<div class="condutaCard">
-
-<h2>📂 Análise</h2>
-
-<ul>
-
-<li>Leia todo o contexto.</li>
-
-<li>Confira horários.</li>
-
-<li>Analise prints e vídeos.</li>
-
-<li>Nunca aplique punições precipitadas.</li>
-
-<li>Considere agravantes e atenuantes.</li>
-
-</ul>
-
-</div>
-
-<div class="condutaCard">
-
-<h2>🚫 Condutas Proibidas</h2>
-
-<ul>
-
-<li>Abuso de poder.</li>
-
-<li>Favorecimento.</li>
-
-<li>Punições por vingança.</li>
-
-<li>Alterar provas.</li>
-
-<li>Divulgar informações internas.</li>
-
-</ul>
-
-</div>
-
-<div class="condutaCard">
-
-<h2>📋 Durante um Atendimento</h2>
-
-<ul>
-
-<li>Ouça ambas as partes.</li>
-
-<li>Solicite provas.</li>
-
-<li>Mantenha organização.</li>
-
-<li>Explique o motivo da decisão.</li>
-
-<li>Registre corretamente o relatório.</li>
-
-</ul>
-
-</div>
-
-<div class="condutaCard">
-
-<h2>🏆 Excelência</h2>
-
-<ul>
-
-<li>Seja exemplo para os demais militares.</li>
-
-<li>Atualize-se sobre as normas.</li>
-
-<li>Busque melhorar continuamente.</li>
-
-<li>Trabalhe em equipe.</li>
-
-<li>Zele pela reputação da CGEx.</li>
-
-</ul>
-
-</div>
-
-</div>
-
-<div class="progresso">
-
-<h3 style="margin-bottom:10px;color:#f7c948;">
-✔ Manual de Conduta Oficial
-</h3>
-
-<div class="barra">
-
-<div class="preenchimento"></div>
-
-</div>
-
-</div>
-
-<div class="juramento">
-
-<h2>🏛 Juramento do Corregedor</h2>
-
-<p>
-
-"Comprometo-me a exercer minhas funções com honestidade, imparcialidade e responsabilidade, respeitando todas as normas da Corregedoria Geral do Exército. Agirei sempre baseado em provas, preservando a justiça, a disciplina e a credibilidade da instituição, sem permitir que interesses pessoais interfiram em minhas decisões."
-
-</p>
-
-</div>
-
-<div class="fraseFinal">
-
-"A Justiça fortalece o Exército. A Imparcialidade fortalece a Justiça."
-
-</div>
-
-</div>
-
-<footer>
-
-Portal Oficial da Corregedoria © 2026
-
-</footer>
-
+      </div>
+    </div>
+
+    <!-- PUNIÇÕES DISCORD -->
+    <div id="frases" class="page">
+      <h1>🚫 Punições do Discord</h1>
+      <p style="margin-top:10px;opacity:.8;">
+        <b>Administração | EB do Delta</b>
+      </p>
+      <br>
+
+      <div class="notice">
+        <h2 style="color:#f7c948;">📋 Informações Gerais</h2>
+        <p>Nesta página estão descritas as regras da comunidade do Discord e os tipos de punições aplicáveis em caso de descumprimento.</p>
+        <ul>
+          <li><b>(L)</b> – Infrações Leves: <b>Mute de 10 minutos a 1 hora.</b></li>
+          <li><b>(M)</b> – Infrações Moderadas: <b>Mute de 2 horas a 8 horas.</b></li>
+          <li><b>(G)</b> – Infrações Graves: <b>Mute de 12 horas a 3 dias.</b></li>
+          <li><b>(PB)</b> – Infrações Passíveis de Ban: <b>1 a 7 dias</b> (reincidência: <b>7 a 30 dias</b>).</li>
+          <li><b>(EG)</b> – Infrações Extra Graves: <b>Banimento imediato (30 dias até permanente).</b></li>
+        </ul>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#7CFC00;">🟢 (L) Infrações Leves</h2>
+        <ul>
+          <li>Discussões em chat.</li>
+          <li>Uso de palavras de baixo calão simples.</li>
+          <li>Mau uso dos canais.</li>
+          <li>Incentivar brigas em chat.</li>
+          <li>Flood (mensagens repetidas).</li>
+          <li>Uso excessivo de CAPS LOCK.</li>
+          <li>Pingar @Oficiais do Exército+ sem necessidade.</li>
+        </ul>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#FFD700;">🟡 (M) Infrações Moderadas</h2>
+        <ul>
+          <li>Uso de palavras de baixo calão graves.</li>
+          <li>Ofensas a @Oficiais do Exército+.</li>
+          <li>Brincadeiras maliciosas.</li>
+          <li>Assuntos inapropriados em chat.</li>
+        </ul>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#FF8C00;">🟠 (G) Infrações Graves</h2>
+        <ul>
+          <li>Divulgação indireta no servidor.</li>
+          <li>Bagunça em chat ou call.</li>
+          <li>Tentar se passar por @[SCR] Sub Criador+.</li>
+          <li>Ofensas diretas e graves.</li>
+          <li>Spam.</li>
+          <li>Conteúdo gore ou assuntos gore.</li>
+          <li>Desobedecer ordens dentro do RP sem justificativa.</li>
+          <li>Quebra dos Termos de Serviço do Discord.</li>
+        </ul>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#FF4D4D;">🔴 (PB) Infrações Passíveis de Ban</h2>
+        <ul>
+          <li>Divulgação no servidor.</li>
+          <li>Divulgação indireta no servidor.</li>
+          <li>Compartilhamento de conta.</li>
+          <li>Uso de contas alternativas para burlar punições.</li>
+        </ul>
+      </div>
+
+      <div class="notice">
+        <h2 style="color:#8B0000;">⛔ (EG) Infrações Extra Graves</h2>
+        <ul>
+          <li>Divulgação no privado.</li>
+          <li>Imagens ou assuntos de pedofilia.</li>
+          <li>Imagens ou assuntos de zoofilia.</li>
+          <li>Imagens ou assuntos de necrofilia.</li>
+          <li>Imagens ou assuntos homofóbicas.</li>
+          <li>Imagens ou assuntos nazistas.</li>
+          <li>Imagens ou assuntos que sejam contra os Direitos Humanos.</li>
+          <li>Incentivo ou imagens de automutilação.</li>
+          <li>Ameaças reais.</li>
+          <li>Tentativa de invadir contas.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CONDUTAS -->
+    <div id="condutas" class="page">
+      <div class="bannerConduta">
+        <h1>📖 Manual de Conduta da Corregedoria</h1>
+        <p>
+          A Corregedoria representa a imparcialidade, disciplina e justiça dentro do Exército Brasileiro do Delta.
+          Cada decisão tomada por um Corregedor reflete diretamente na credibilidade da instituição.
+        </p>
+      </div>
+
+      <div class="gridCondutas">
+        <div class="condutaCard">
+          <h2>⚖️ Imparcialidade</h2>
+          <ul>
+            <li>Nunca favoreça amigos.</li>
+            <li>Nunca prejudique desafetos.</li>
+            <li>Analise apenas fatos.</li>
+            <li>Toda decisão deve possuir fundamento.</li>
+            <li>A prova sempre prevalece sobre opiniões.</li>
+          </ul>
+        </div>
+        <div class="condutaCard">
+          <h2>🛡️ Postura</h2>
+          <ul>
+            <li>Mantenha educação durante todo atendimento.</li>
+            <li>Nunca provoque usuários.</li>
+            <li>Evite discussões desnecessárias.</li>
+            <li>Seja profissional mesmo sob pressão.</li>
+            <li>Respeite toda a hierarquia.</li>
+          </ul>
+        </div>
+        <div class="condutaCard">
+          <h2>📂 Análise</h2>
+          <ul>
+            <li>Leia todo o contexto.</li>
+            <li>Confira horários.</li>
+            <li>Analise prints e vídeos.</li>
+            <li>Nunca aplique punições precipitadas.</li>
+            <li>Considere agravantes e atenuantes.</li>
+          </ul>
+        </div>
+        <div class="condutaCard">
+          <h2>🚫 Condutas Proibidas</h2>
+          <ul>
+            <li>Abuso de poder.</li>
+            <li>Favorecimento.</li>
+            <li>Punições por vingança.</li>
+            <li>Alterar provas.</li>
+            <li>Divulgar informações internas.</li>
+          </ul>
+        </div>
+        <div class="condutaCard">
+          <h2>📋 Durante um Atendimento</h2>
+          <ul>
+            <li>Ouça ambas as partes.</li>
+            <li>Solicite provas.</li>
+            <li>Mantenha organização.</li>
+            <li>Explique o motivo da decisão.</li>
+            <li>Registre corretamente o relatório.</li>
+          </ul>
+        </div>
+        <div class="condutaCard">
+          <h2>🏆 Excelência</h2>
+          <ul>
+            <li>Seja exemplo para os demais militares.</li>
+            <li>Atualize-se sobre as normas.</li>
+            <li>Busque melhorar continuamente.</li>
+            <li>Trabalhe em equipe.</li>
+            <li>Zele pela reputação da CGEx.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="progresso">
+        <h3 style="margin-bottom:10px;color:#f7c948;">
+          ✔ Manual de Conduta Oficial
+        </h3>
+        <div class="barra" style="width:100%;height:14px;background:#30343c;border-radius:50px;overflow:hidden;">
+          <div class="preenchimento" style="height:100%;width:100%;background:linear-gradient(90deg,#f7c948,#ffd95a);"></div>
+        </div>
+      </div>
+
+      <div class="juramento" style="margin-top:40px;background:#181b21;padding:30px;border-radius:15px;border-left:6px solid #f7c948;">
+        <h2 style="color:#f7c948;margin-bottom:20px;">🏛 Juramento do Corregedor</h2>
+        <p style="line-height:1.8;">
+          "Comprometo-me a exercer minhas funções com honestidade, imparcialidade e responsabilidade, respeitando todas as normas da Corregedoria Geral do Exército. Agirei sempre baseado em provas, preservando a justiça, a disciplina e a credibilidade da instituição, sem permitir que interesses pessoais interfiram em minhas decisões."
+        </p>
+      </div>
+
+      <div class="fraseCG">
+        "A Justiça fortalece o Exército. A Imparcialidade fortalece a Justiça."
+      </div>
+    </div>
 
     <!-- ================= PÁGINA RESTRITA: CGEx OS (ALTO ESCALÃO) ================= -->
     <div id="cgex-os" class="page space-y-6">
@@ -1964,11 +1174,11 @@ Portal Oficial da Corregedoria © 2026
             <div class="flex items-center space-x-2">
                 <i class="ph-bold ph-student text-indigo-400 text-lg"></i>
                 <h3 class="font-bold text-sm text-indigo-300 uppercase tracking-wider">Estagiários</h3>
-              </div>
-              <span id="total-estagiarios" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full font-medium">0</span>
             </div>
-            <table class="w-full text-left text-sm">
-              <thead class="bg-slate-950 text-slate-400 text-xs uppercase tracking-wider border-b border-slate-800">
+            <span id="total-estagiarios" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full font-medium">0</span>
+          </div>
+          <table class="w-full text-left text-sm">
+            <thead class="bg-slate-950 text-slate-400 text-xs uppercase tracking-wider border-b border-slate-800">
               <tr>
                 <th class="p-3">Nome</th>
                 <th class="p-3">ID</th>
@@ -1986,11 +1196,11 @@ Portal Oficial da Corregedoria © 2026
             <div class="flex items-center space-x-2">
                 <i class="ph-bold ph-graduation-cap text-emerald-400 text-lg"></i>
                 <h3 class="font-bold text-sm text-emerald-300 uppercase tracking-wider">Aprendizes</h3>
-              </div>
-              <span id="total-aprendizes" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full font-medium">0</span>
             </div>
-            <table class="w-full text-left text-sm">
-              <thead class="bg-slate-950 text-slate-400 text-xs uppercase tracking-wider border-b border-slate-800">
+            <span id="total-aprendizes" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full font-medium">0</span>
+          </div>
+          <table class="w-full text-left text-sm">
+            <thead class="bg-slate-950 text-slate-400 text-xs uppercase tracking-wider border-b border-slate-800">
               <tr>
                 <th class="p-3">Nome</th>
                 <th class="p-3">ID</th>
@@ -2051,7 +1261,76 @@ Portal Oficial da Corregedoria © 2026
     </div>
   </main>
 
+  <footer class="fixed bottom-2 right-4 text-[11px] text-slate-600 pointer-events-none z-30">
+    Portal Oficial da Corregedoria © 2026
+  </footer>
+
   <!-- ================= MODAIS RESTRITOS ================= -->
+
+  <!-- Modal Publicar Anúncio -->
+  <div id="modal-anuncio" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
+    <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 w-full max-w-lg space-y-4 shadow-2xl">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+        <div class="flex items-center space-x-2">
+          <i class="ph-bold ph-megaphone text-indigo-400 text-xl"></i>
+          <h3 class="font-bold text-base text-white">Publicar Anúncio Oficial</h3>
+        </div>
+        <button onclick="closeModal('modal-anuncio')" class="text-slate-400 hover:text-white"><i class="ph-bold ph-x text-xl"></i></button>
+      </div>
+      <form onsubmit="saveAnuncio(event)" class="space-y-3 text-xs">
+        <div>
+          <label class="block font-medium text-slate-400 mb-1">Tipo de Anúncio</label>
+          <select id="anc-tipo" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 outline-none focus:border-indigo-500 text-slate-200">
+            <option value="IMPORTANTE">IMPORTANTE (Vermelho)</option>
+            <option value="NOVO">NOVO (Verde)</option>
+            <option value="INFORMATIVO">INFORMATIVO (Azul)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-medium text-slate-400 mb-1">Título do Anúncio</label>
+          <input type="text" id="anc-titulo" required placeholder="Ex: Atualização do Código de Conduta" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 outline-none focus:border-indigo-500 text-slate-200" />
+        </div>
+        <div>
+          <label class="block font-medium text-slate-400 mb-1">Data / Horário</label>
+          <input type="text" id="anc-data" required placeholder="Ex: 28/07/2026 • 15:30" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 outline-none focus:border-indigo-500 text-slate-200" />
+        </div>
+        <div>
+          <label class="block font-medium text-slate-400 mb-1">Conteúdo Completo do Anúncio</label>
+          <textarea id="anc-conteudo" required rows="5" placeholder="Escreva a mensagem completa do anúncio..." class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 outline-none focus:border-indigo-500 text-slate-200 leading-relaxed"></textarea>
+        </div>
+        <div class="flex justify-end space-x-2 pt-3 border-t border-slate-800">
+          <button type="button" onclick="closeModal('modal-anuncio')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg font-semibold text-slate-300">Cancelar</button>
+          <button type="submit" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-500 rounded-lg font-bold text-white flex items-center gap-1.5">
+            <i class="ph-bold ph-paper-plane-right"></i>
+            <span>Publicar</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Ler Anúncio Completo -->
+  <div id="modal-ver-anuncio" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 w-full max-w-xl space-y-4 shadow-2xl relative">
+      <div class="flex justify-between items-start border-b border-slate-800 pb-3">
+        <div>
+          <span id="ver-anc-tipo" class="tipo">TIPO</span>
+          <h2 id="ver-anc-titulo" class="text-xl font-bold text-white mt-1">Título do Anúncio</h2>
+          <div id="ver-anc-data" class="data mt-1">📅 Data</div>
+        </div>
+        <button onclick="closeModal('modal-ver-anuncio')" class="text-slate-400 hover:text-white p-1"><i class="ph-bold ph-x text-xl"></i></button>
+      </div>
+      <div id="ver-anc-conteudo" class="text-xs md:text-sm text-slate-300 whitespace-pre-wrap leading-relaxed max-h-[60vh] overflow-y-auto pr-2">
+        Conteúdo...
+      </div>
+      <div class="flex justify-between items-center pt-3 border-t border-slate-800">
+        <div id="ver-anc-actions-admin">
+          <!-- Botão Excluir injetado se Admin -->
+        </div>
+        <button onclick="closeModal('modal-ver-anuncio')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs rounded-lg">Fechar</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Modal Login -->
   <div id="modal-login" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
@@ -2291,6 +1570,7 @@ Portal Oficial da Corregedoria © 2026
     let auth = null;
     let currentUser = null;
     let cacheAprendizes = {};
+    let cacheAnuncios = {};
 
     window.addEventListener('DOMContentLoaded', () => {
       initFirebase();
@@ -2447,6 +1727,130 @@ Portal Oficial da Corregedoria © 2026
       db.ref('setores').on('value', s => renderSetores(s.val() || {}));
       db.ref('metas').on('value', s => renderMetas(s.val() || {}));
       db.ref('biblioteca').on('value', s => renderBiblioteca(s.val() || {}));
+      db.ref('anuncios').on('value', s => { cacheAnuncios = s.val() || {}; renderAnuncios(cacheAnuncios); });
+    }
+
+    // LÓGICA DE ANÚNCIOS DINÂMICOS
+    function renderAnuncios(data) {
+      const container = document.getElementById('anuncios-container');
+      container.innerHTML = '';
+
+      const keys = Object.keys(data);
+      if (keys.length === 0) {
+        // Anúncios Padrões Oficiais se o banco estiver vazio
+        const padroes = [
+          {
+            key: 'p1',
+            data: '📅 28/07/2026 • 01:10',
+            tipo: 'IMPORTANTE',
+            titulo: 'Critérios de Punições',
+            conteudo: 'Os critérios de punições da CGEx foram atualizados.\n\nTodos os membros deverão utilizar este portal como referência e avisar se ocorrer divergências.'
+          },
+          {
+            key: 'p2',
+            data: '📅 28/07/2026 • 01:10',
+            tipo: 'NOVO',
+            titulo: 'Portal Oficial disponibilizado',
+            conteudo: 'Foi disponibilizado o Portal Oficial da Corregedoria contendo documentação, modelos, comandos proibidos e procedimentos administrativos.'
+          },
+          {
+            key: 'p3',
+            data: '📅 28/07/2026 • 01:10',
+            tipo: 'INFORMATIVO',
+            titulo: 'Padronização de Relatórios',
+            conteudo: 'Todos os relatórios deverão utilizar exclusivamente os modelos disponibilizados neste portal.\n\nModelos antigos deixam de ser considerados oficiais.'
+          },
+          {
+            key: 'p4',
+            data: '📅 28/07/2026 • 01:10',
+            tipo: 'IMPORTANTE',
+            titulo: 'Consulta obrigatória da documentação',
+            conteudo: 'Antes de qualquer punição, consulte a documentação oficial disponível neste sistema.\n\nDecisões tomadas em desacordo com os critérios da CGEx poderão ser revistas.'
+          }
+        ];
+        padroes.forEach(item => mountAnuncioCard(container, item));
+        return;
+      }
+
+      // Ordena por data de criação mais recente
+      const lista = keys.map(k => ({ key: k, ...data[k] }));
+      lista.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+
+      lista.forEach(item => mountAnuncioCard(container, item));
+    }
+
+    function mountAnuncioCard(container, item) {
+      let tipoClass = "info";
+      if (item.tipo === 'IMPORTANTE') tipoClass = "importante";
+      if (item.tipo === 'NOVO') tipoClass = "novo";
+
+      const card = document.createElement('div');
+      card.className = "anuncio searchable-item";
+      card.onclick = () => verAnuncioCompleto(item.key, item);
+      card.innerHTML = `
+        <div class="data">${item.data || '📅 Sem data'}</div>
+        <span class="tipo ${tipoClass}">${item.tipo || 'INFORMATIVO'}</span>
+        <h2>${item.titulo || 'Sem Título'}</h2>
+        <p class="line-clamp-2">${item.conteudo || ''}</p>
+      `;
+      container.appendChild(card);
+    }
+
+    function openAnuncioModal() {
+      if (!currentUser) return alert("Apenas membros autorizados podem publicar!");
+      const now = new Date();
+      const formatData = `📅 ${now.toLocaleDateString('pt-BR')} • ${now.toLocaleTimeString('pt-BR', {hour: '2-digit', minute:'2-digit'})}`;
+      document.getElementById('anc-data').value = formatData;
+      document.getElementById('anc-titulo').value = '';
+      document.getElementById('anc-conteudo').value = '';
+      document.getElementById('modal-anuncio').classList.remove('hidden');
+    }
+
+    function saveAnuncio(e) {
+      e.preventDefault();
+      if (!currentUser) return alert("Não autorizado.");
+      
+      const payload = {
+        tipo: document.getElementById('anc-tipo').value,
+        titulo: document.getElementById('anc-titulo').value,
+        data: document.getElementById('anc-data').value,
+        conteudo: document.getElementById('anc-conteudo').value,
+        autor: currentUser.email || 'Alto Escalão',
+        createdAt: firebase.database.ServerValue.TIMESTAMP
+      };
+
+      db.ref('anuncios').push(payload, () => {
+        closeModal('modal-anuncio');
+        alert("Anúncio publicado com sucesso!");
+      });
+    }
+
+    function verAnuncioCompleto(key, itemData) {
+      const item = itemData || cacheAnuncios[key];
+      if (!item) return;
+
+      const badgeElem = document.getElementById('ver-anc-tipo');
+      badgeElem.innerText = item.tipo || 'INFORMATIVO';
+      badgeElem.className = 'tipo ' + (item.tipo === 'IMPORTANTE' ? 'importante' : item.tipo === 'NOVO' ? 'novo' : 'info');
+
+      document.getElementById('ver-anc-titulo').innerText = item.titulo || 'Sem Título';
+      document.getElementById('ver-anc-data').innerText = item.data || '';
+      document.getElementById('ver-anc-conteudo').innerText = item.conteudo || '';
+
+      const actionsAdmin = document.getElementById('ver-anc-actions-admin');
+      actionsAdmin.innerHTML = '';
+      
+      // Se for item real do banco e o usuário for admin, permite excluir
+      if (currentUser && key && !key.startsWith('p')) {
+        actionsAdmin.innerHTML = `
+          <button onclick="deleteRecord('anuncios/${key}'); closeModal('modal-ver-anuncio');" class="px-3 py-1.5 bg-rose-950/60 hover:bg-rose-900 border border-rose-800/50 text-rose-300 font-semibold text-xs rounded-lg flex items-center gap-1">
+            <i class="ph-bold ph-trash"></i>
+            <span>Excluir Anúncio</span>
+          </button>
+        `;
+      }
+
+      document.getElementById('modal-ver-anuncio').classList.remove('hidden');
     }
 
     function renderCasos(casos) {
@@ -2530,34 +1934,109 @@ Portal Oficial da Corregedoria © 2026
     function renderSetores(data) {
       const container = document.getElementById('setores-container');
       container.innerHTML = '';
-      const listaSetores = ["Rebaixamento e Advertências", "Promoções", "Instruções", "Avais", "Autorização", "Revogações", "Exílios"];
 
-      listaSetores.forEach(sNome => {
-        const mSetor = [];
-        Object.keys(data).forEach(k => { if (data[k].setor === sNome) mSetor.push({ key: k, ...data[k] }); });
+      const listaSetores = [
+        "Rebaixamento e Advertências", 
+        "Promoções", 
+        "Instruções", 
+        "Avais", 
+        "Autorização", 
+        "Revogações", 
+        "Exílios"
+      ];
 
-        let mHTML = mSetor.length === 0 ? `<p class="text-xs text-slate-500 italic p-3 text-center">Nenhum membro.</p>` : '';
-        mSetor.forEach(m => {
-          const deleteBtn = currentUser ? `<button onclick="deleteRecord('setores/${m.key}')" class="text-slate-600 hover:text-rose-400"><i class="ph-bold ph-trash"></i></button>` : '';
-          mHTML += `
-            <div class="flex items-center justify-between p-2.5 rounded bg-slate-950/60 border border-slate-800 searchable-item">
-              <div>
-                <span class="font-semibold text-xs text-slate-200">${m.membro}</span>
-                <div class="text-[10px] text-slate-400">${m.cargo || 'Membro'} • ${m.funcao || 'Auditor'}</div>
-              </div>
-              ${deleteBtn}
-            </div>
-          `;
+      const hierarquiaOrdem = {
+        "Sec. Departamento": 1,
+        "Corregedor Geral": 2,
+        "Corregedor": 3,
+        "Coordenador": 4,
+        "Supervisor": 5,
+        "Analista": 6,
+        "Sênior": 7
+      };
+
+      listaSetores.forEach(setorNome => {
+        const membrosSetor = [];
+        Object.keys(data).forEach(k => {
+          if (data[k].setor === setorNome) {
+            membrosSetor.push({ key: k, ...data[k] });
+          }
         });
 
+        membrosSetor.sort((a, b) => {
+          const aResponsavel = a.funcao === "Responsável";
+          const bResponsavel = b.funcao === "Responsável";
+
+          if (aResponsavel && !bResponsavel) return -1;
+          if (!aResponsavel && bResponsavel) return 1;
+
+          const oA = hierarquiaOrdem[a.cargo] || 99;
+          const oB = hierarquiaOrdem[b.cargo] || 99;
+
+          return oA - oB;
+        });
+
+        let membrosHTML = '';
+        if (membrosSetor.length === 0) {
+          membrosHTML = `<p class="text-xs text-slate-500 italic p-3 text-center">Nenhum membro neste setor.</p>`;
+        } else {
+          membrosSetor.forEach(m => {
+            const isSecDep = m.cargo === "Sec. Departamento";
+            const isCorregedorGeral = m.cargo === "Corregedor Geral";
+            const isCorregedor = m.cargo === "Corregedor";
+            const isResponsavel = m.funcao === "Responsável";
+
+            let bgStyle = "bg-slate-950/60 border-slate-800/80";
+            let badgeStyle = "bg-slate-800 text-slate-400 border-slate-700";
+
+            if (isSecDep) {
+              bgStyle = "bg-gradient-to-r from-purple-950/40 to-slate-900 border-purple-500/40 shadow-sm";
+              badgeStyle = "bg-purple-500/20 text-purple-300 border-purple-500/30";
+            } else if (isCorregedorGeral) {
+              bgStyle = "bg-gradient-to-r from-amber-950/40 to-slate-900 border-amber-500/40 shadow-sm";
+              badgeStyle = "bg-amber-500/20 text-amber-300 border-amber-500/30";
+            } else if (isCorregedor) {
+              bgStyle = "bg-gradient-to-r from-indigo-950/40 to-slate-900 border-indigo-500/40 shadow-sm";
+              badgeStyle = "bg-indigo-500/20 text-indigo-300 border-indigo-500/30";
+            }
+
+            const deleteBtnHTML = currentUser 
+              ? `<button onclick="deleteRecord('setores/${m.key}')" class="text-slate-600 hover:text-rose-400 p-1 transition"><i class="ph-bold ph-trash"></i></button>` 
+              : '';
+
+            membrosHTML += `
+              <div class="flex items-center justify-between p-3 rounded-lg border ${bgStyle} transition searchable-item">
+                <div class="space-y-0.5">
+                  <div class="flex items-center space-x-1.5">
+                    <span class="font-semibold text-sm text-slate-100">${m.membro}</span>
+                    ${isResponsavel ? '<span class="text-amber-400 text-xs" title="Responsável pelo Setor">⭐</span>' : ''}
+                  </div>
+                  <div class="flex items-center space-x-2">
+                    <span class="px-2 py-0.5 rounded text-[10px] font-bold border ${badgeStyle}">${m.cargo || 'Membro'}</span>
+                    <span class="text-[11px] text-slate-400">${m.funcao || 'Auditor'}</span>
+                  </div>
+                </div>
+                ${deleteBtnHTML}
+              </div>
+            `;
+          });
+        }
+
         const card = document.createElement('div');
-        card.className = "bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-3";
+        card.className = "bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between";
         card.innerHTML = `
-          <div class="flex justify-between items-center border-b border-slate-800 pb-2">
-            <h3 class="font-bold text-xs text-slate-200">${sNome}</h3>
-            <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">${mSetor.length}</span>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+              <div class="flex items-center space-x-2">
+                <i class="ph-bold ph-folder text-indigo-400 text-lg"></i>
+                <h3 class="font-bold text-slate-200">${setorNome}</h3>
+              </div>
+              <span class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full font-medium">${membrosSetor.length}</span>
+            </div>
+            <div class="space-y-2">
+              ${membrosHTML}
+            </div>
           </div>
-          <div class="space-y-2">${mHTML}</div>
         `;
         container.appendChild(card);
       });
@@ -2743,128 +2222,14 @@ Portal Oficial da Corregedoria © 2026
       });
     }
 
-function copiar(id){
-    const texto = document.getElementById(id).innerText;
-    navigator.clipboard.writeText(texto);
-    alert("Modelo copiado com sucesso!");
-}
+    function copiar(id) {
+      const texto = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(texto);
+      alert("Modelo copiado com sucesso!");
+    }
 
-function abrirMenu(){
-
-document.querySelector("aside").classList.toggle("active");
-
-}
-
-    // RENDERIZAR SETORES OPERACIONAIS
-    function renderSetores(data) {
-      const container = document.getElementById('setores-container');
-      container.innerHTML = '';
-
-      const listaSetores = [
-        "Rebaixamento e Advertências", 
-        "Promoções", 
-        "Instruções", 
-        "Avais", 
-        "Autorização", 
-        "Revogações", 
-        "Exílios"
-      ];
-
-      const hierarquiaOrdem = {
-        "Sec. Departamento": 1,
-        "Corregedor Geral": 2,
-        "Corregedor": 3,
-        "Coordenador": 4,
-        "Supervisor": 5,
-        "Analista": 6,
-        "Sênior": 7
-      };
-
-      listaSetores.forEach(setorNome => {
-        const membrosSetor = [];
-        Object.keys(data).forEach(k => {
-          if (data[k].setor === setorNome) {
-            membrosSetor.push({ key: k, ...data[k] });
-          }
-        });
-
-        membrosSetor.sort((a, b) => {
-          const aResponsavel = a.funcao === "Responsável";
-          const bResponsavel = b.funcao === "Responsável";
-
-          if (aResponsavel && !bResponsavel) return -1;
-          if (!aResponsavel && bResponsavel) return 1;
-
-          const oA = hierarquiaOrdem[a.cargo] || 99;
-          const oB = hierarquiaOrdem[b.cargo] || 99;
-
-          return oA - oB;
-        });
-
-        let membrosHTML = '';
-        if (membrosSetor.length === 0) {
-          membrosHTML = `<p class="text-xs text-slate-500 italic p-3 text-center">Nenhum membro neste setor.</p>`;
-        } else {
-          membrosSetor.forEach(m => {
-            const isSecDep = m.cargo === "Sec. Departamento";
-            const isCorregedorGeral = m.cargo === "Corregedor Geral";
-            const isCorregedor = m.cargo === "Corregedor";
-            const isResponsavel = m.funcao === "Responsável";
-
-            let bgStyle = "bg-slate-950/60 border-slate-800/80";
-            let badgeStyle = "bg-slate-800 text-slate-400 border-slate-700";
-
-            if (isSecDep) {
-              bgStyle = "bg-gradient-to-r from-purple-950/40 to-slate-900 border-purple-500/40 shadow-sm";
-              badgeStyle = "bg-purple-500/20 text-purple-300 border-purple-500/30";
-            } else if (isCorregedorGeral) {
-              bgStyle = "bg-gradient-to-r from-amber-950/40 to-slate-900 border-amber-500/40 shadow-sm";
-              badgeStyle = "bg-amber-500/20 text-amber-300 border-amber-500/30";
-            } else if (isCorregedor) {
-              bgStyle = "bg-gradient-to-r from-indigo-950/40 to-slate-900 border-indigo-500/40 shadow-sm";
-              badgeStyle = "bg-indigo-500/20 text-indigo-300 border-indigo-500/30";
-            }
-
-            const deleteBtnHTML = currentUser 
-              ? `<button onclick="deleteRecord('setores/${m.key}')" class="text-slate-600 hover:text-rose-400 p-1 transition"><i class="ph-bold ph-trash"></i></button>` 
-              : '';
-
-            membrosHTML += `
-              <div class="flex items-center justify-between p-3 rounded-lg border ${bgStyle} transition searchable-item">
-                <div class="space-y-0.5">
-                  <div class="flex items-center space-x-1.5">
-                    <span class="font-semibold text-sm text-slate-100">${m.membro}</span>
-                    ${isResponsavel ? '<span class="text-amber-400 text-xs" title="Responsável pelo Setor">⭐</span>' : ''}
-                  </div>
-                  <div class="flex items-center space-x-2">
-                    <span class="px-2 py-0.5 rounded text-[10px] font-bold border ${badgeStyle}">${m.cargo || 'Membro'}</span>
-                    <span class="text-[11px] text-slate-400">${m.funcao || 'Auditor'}</span>
-                  </div>
-                </div>
-                ${deleteBtnHTML}
-              </div>
-            `;
-          });
-        }
-
-        const card = document.createElement('div');
-        card.className = "bg-slate-900 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col justify-between";
-        card.innerHTML = `
-          <div class="space-y-3">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-              <div class="flex items-center space-x-2">
-                <i class="ph-bold ph-folder text-indigo-400 text-lg"></i>
-                <h3 class="font-bold text-slate-200">${setorNome}</h3>
-              </div>
-              <span class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full font-medium">${membrosSetor.length}</span>
-            </div>
-            <div class="space-y-2">
-              ${membrosHTML}
-            </div>
-          </div>
-        `;
-        container.appendChild(card);
-      });
+    function abrirMenu() {
+      document.querySelector("aside").classList.toggle("active");
     }
   </script>
 </body>
