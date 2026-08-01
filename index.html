@@ -214,6 +214,22 @@
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
 
+// BOTAO DE MUSICA
+#musicBtn{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:50%;
+    background:#1e293b;
+    color:#fff;
+    cursor:pointer;
+    font-size:18px;
+    z-index:9999;
+}
+
     /* Estilos do Boletim / Anúncios */
     .bannerNoticias {
       background: linear-gradient(135deg,#0f4c81,#183b63);
@@ -2573,6 +2589,52 @@
         container.appendChild(card);
       });
     }
-  </script>
+  </script> 
+<audio id="bgMusic" loop>
+    <source src="CGEx9.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn">▶</button>
+
+<script>
+window.addEventListener("load", () => {
+    const music = document.getElementById("bgMusic");
+    music.volume = 0.2;
+
+    document.body.addEventListener("click", () => {
+        music.play().catch(err => console.log(err));
+    }, { once: true });
+});
+</script>
+<audio id="bgMusic" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById("bgMusic");
+const btn = document.getElementById("musicBtn");
+
+music.volume = 0.2;
+
+// Toca na primeira interação
+document.addEventListener("click", function iniciar() {
+    music.play();
+    btn.textContent = "⏸";
+    document.removeEventListener("click", iniciar);
+});
+
+// Play/Pause
+btn.onclick = function(e) {
+    e.stopPropagation();
+
+    if (music.paused) {
+        music.play();
+        btn.textContent = "⏸";
+    } else {
+        music.pause();
+        btn.textContent = "▶";
+    }
+};
+</script>
 </body>
 </html>
