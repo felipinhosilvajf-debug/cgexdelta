@@ -2300,11 +2300,24 @@
         if (isEstagiario) countEst++; else countAp++;
 
         const tr = document.createElement('tr');
+		if (a.desligado) {
+
+    tr.style.backgroundColor = "#7f1d1d";
+    tr.style.borderLeft = "5px solid #ef4444";
+
+}
         tr.className = "hover:bg-slate-900/50 transition searchable-item";
         
         const actionsHtml = currentUser ? `
           <td class="p-3 text-right flex justify-end space-x-2">
             <button onclick="openAprendizModal('${key}')" class="text-slate-400 hover:text-indigo-400"><i class="ph-bold ph-pencil"></i></button>
+			<button onclick="toggleDesligado('${key}')"
+			class="text-red-400 hover:text-red-300"
+			title="Marcar desligamento">
+
+			<i class="ph-bold ph-user-minus"></i>
+
+			</button>
             <button onclick="deleteRecord('aprendizes/${key}')" class="text-slate-400 hover:text-rose-400"><i class="ph-bold ph-trash"></i></button>
           </td>
         ` : '';
@@ -2629,6 +2642,17 @@ btn.onclick = function(e) {
         btn.textContent = "▶";
     }
 };
+function toggleDesligado(key){
+
+    const item = cacheAprendizes[key];
+
+    firebase.database()
+        .ref("aprendizes/" + key)
+        .update({
+            desligado: !item.desligado
+        });
+
+}
 </script>
 </body>
 </html>
